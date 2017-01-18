@@ -1,5 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
+}
+#account {
+    float: right;
+}
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #76b852;
+}
 .login-page {
   width: 360px;
   padding: 1% 0 0;
@@ -7,7 +35,7 @@
 }
  h1 {
     text-align: center;
-    padding: 15% 0 0;
+    padding: 10% 0 0;
     color: white;
 	font-family: Brush Script MT,cursive;
 	font-size: 100px;
