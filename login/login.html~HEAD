@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Be Well'r</title>
+	
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<style>
+    #title {
+        font-size: 64px;
+    }
+    #loginbutton {
+        font-family: 'Open Sans Condensed', sans-serif;
+        text-transform: uppercase;
+        background: #4CAF50;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 16px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+
+    }
+    .container {
+        text-transform: uppercase;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
+    }
+    .w3-container {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto; 
+        position: relative;
+        z-index: 1;        
+        max-width: 360px;
+        text-align: center;
+         
+    }
+      body {
+        background-color: limegreen;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 20px;
+      }
+</style>
+</head>
+<body>
+
+<div class="w3-container">
+  <h1 id="title"><div style="font-family: 'Lobster', cursive;">Be Well'r</div></h1>
+  
+  <div class="container">
+    
+    <form class="w3-container w3-white">
+      <p>
+      <input class="w3-input" type="text">
+      <label>Username</label></p>
+      <p>
+      <input class="w3-input" type="password">
+      <label>Password</label></p>
+        <button id="loginbutton">Login</button>
+        <br><br>
+        <a href="register.html">Not Registered? Click Here to Join</a>
+        
+    
+      </form>
+  </div>
+</div>
+
+</body>
+</html>
