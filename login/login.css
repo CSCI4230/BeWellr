@@ -53,7 +53,7 @@ li a:hover {
   padding: 45px;
   text-align: center;
   border-radius: 10px;
-    box-shadow: 0 0 100px 0 #AEFFAB, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
   font-family: "Roboto", sans-serif;
