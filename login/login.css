@@ -138,3 +138,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+.occupation {
+    position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 1000px;
+  margin: 0 auto 10px;
+  padding: 4px;
+  text-align: center;
+  border-radius: 10px;
+    box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+}
