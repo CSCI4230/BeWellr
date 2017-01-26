@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head><link rel='stylesheet' type='text/css' href='login.css'/>
-    </head>
-    <body>
-        <ul>
-        <li><a href="index.html">Home</a></li>
-        <li id="account"><a href="news.asp">Account</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="about.asp">About</a></li>
-</ul>
+<?php include 'header.php'; ?>
         <h1>Register</h1>
     <div class="login-page">
         <div class="form">
@@ -155,4 +145,3 @@
             <button>Register</button>
         </div>
     </div>
-</body>
