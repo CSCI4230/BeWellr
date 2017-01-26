@@ -9,7 +9,7 @@
  <ul>
 	<li><a href="Index.php">Home</a></li>
 	<li id="account"><a href="news.asp">Account</a></li>
-	<li><a href="contact.html">Contact</a></li>
+	<li><a href="contact.php">Contact</a></li>
 	<li><a href="about.asp">About</a></li>
 </ul>
 </div>
