@@ -2,7 +2,8 @@
   <title>BeWell'r</title>
   <link rel="stylesheet" href=style.css>
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Farsan" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Farsan" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet"> 
  </head>
 
 <div class = "navbar">
