@@ -76,13 +76,12 @@ h4 {
 body {
 	overflow-x: hidden;
 	background-image: url("MainBackGround.jpg");
-	background-size: 100% auto;
-	background-attachment: fixed;
-  font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
 	font-weight: bold;
 	font-size: 18px;
-	width: 100%;
 	min-height: 100%;
+    min-width: 1024px;
 
 }
 
