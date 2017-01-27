@@ -1,6 +1,6 @@
 .navbar{
-	margin: auto;
-	width: 98%;
+	margin: 0;
+	width: 100%;
 }
 .navbar ul {
     list-style-type: none;
@@ -75,22 +75,82 @@ h4 {
 }
 
 .bottomContainer {
-    position: absolute;
-    padding:0;
-    margin: 25px 0 0 0;
-    left:0;
+    margin: 60px 0 0 0;
+    padding: 0;
     width: 100%;
     height: 400px;
-    background: white;
-    opacity: .8;
+    background: #BFBFBF;
+}
+
+.imageBox1 {
+    margin: 0;
+    padding: 0;
+    height: 350px;
+    width:  200px;
+    float: left;
+    padding: 25px;
+}
+
+.imageBox2 {
+    margin: 0 auto;
+    height: 350px;
+    width: 200px;
+    float: right;
+    padding: 15px;
+}
+
+#bench {
+    margin: 40px 10px;
+}
+
+#cardiogram {
+    margin: 10px;
+    float: right;
+}
+
+#dumbbell {
+    margin: 10px;
+    float: left;
+}
+
+#food {
+    margin: 15px;
+    float: right;
+}
+
+#fruit {
+ margin: 25px;
+ float: left;   
+}
+
+#juice {
+    margin: 40px 10px;
+}
+
+#restaurant {
+    margin: 10px;
+    float: right;
+}
+
+#strawberry {
+    margin: 10px;
+    float: left;
+}
+
+#water-bottle {
+    margin: 15px;
+    float: right;
+}
+
+#weight {
+    margin: 25px;
+ float: left;
 }
 
 .quoteBox {
-    background-color: black;
-    margin: 0 auto;
+    margin: 0;
     height: 380px;
-    width: 600px;
-    margin: center;
+    width: auto;
     word-wrap: normal;
     overflow: hidden;
     padding-top: 20px;
@@ -100,17 +160,17 @@ h4 {
 }
 
 .quote {
-    color: white;
+    color: black;
     font-size: 25px;
 }
 
 .quoteAuthor {
-    color: white;
+    color: black;
 }
 
 body {
-	overflow-x: hidden;
-	background: url("MainBackGround.jpg") no-repeat center center fixed;
+	/*overflow-x: hidden;*/
+	background: url("images/MainBackGround.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -120,6 +180,8 @@ body {
 	font-size: 18px;
 	min-height: 100%;
     min-width: 1024px;
+    padding: 0;
+    margin: 0;
 }
 
 .wrap {
