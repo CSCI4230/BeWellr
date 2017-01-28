@@ -38,9 +38,9 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
          </div>
         <div class="quoteBox">
             <h3 class="quote">
-            "We must let go of the life we have planned, so as to accept the one that is waiting for us."
-            </h3>
-            <p class="quoteAuthor">-Joseph Campbell</p>
+            <b>"We must let go of the life we have planned, so as to accept the one that is waiting for us."
+            </b></h3>
+            <p class="quoteAuthor"><b>-Joseph Campbell</b></p>
          </div>
      </div>
      
