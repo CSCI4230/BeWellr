@@ -17,15 +17,13 @@ $response = array();
 // check for required fields
 if (
 	isset($_POST['Email']) &&
-	isset($_POST['SaltedHash']) &&
-	isset($_POST['Salt']) &&
+	isset($_POST['Password']) &&
  	isset($_POST['FirstName']) && 
  	isset($_POST['LastName']) &&
 	isset($_POST['Data'])) {
  
     $Email = $_POST['Email'];
-    $SaltedHash = $_POST['SaltedHash'];
-    $Salt = $_POST['Salt'];
+    $Password = $_POST['Password'];
     $FirstName = $_POST['FirstName'];
     $LastName = $_POST['LastName'];
     $Data = $_POST['Data'];
@@ -33,11 +31,13 @@ if (
     // include db connect class
     require_once __DIR__ . '/db_connect.php';
  
+    $hash = password_hash($Password, PASSWORD_DEFAULT);
+ 
     // connecting to db
     $db = new DB_CONNECT();
     // mysql inserting a new row
     
-	$result = mysql_query("INSERT INTO User_Data(Email, SaltedHash, Salt, FirstName, LastName, Data) VALUES('$Email', '$SaltedHash', '$Salt', '$FirstName', '$LastName', '$Data')");
+	$result = mysql_query("INSERT INTO User_Data(Email, SaltedHash, FirstName, LastName, Data) VALUES('$Email', '$hash', '$FirstName', '$LastName', '$Data')");
     // check if row inserted or not
     if ($result) {
         // successfully inserted into database
