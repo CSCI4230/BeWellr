@@ -32,6 +32,7 @@
 h2{
     font-family: 'Kaushan Script', cursive;
     color: white;
+    text-shadow: 2px 2px #000000;
     font-size: 75px;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -76,75 +77,47 @@ h4 {
 
 .bottomContainer {
     position: relative;
-    margin: 60px 0 0 0;
+    margin: 60px auto 0;
     padding: 0;
-    width: 100%;
+    width: auto;
     height: auto;
 }
 
-.imageBox1 {
-    margin: 0;
-    height: auto;
-    width:  200px;
-    float: left;
-    padding: 0px;
-
-}
-
-.imageBox2 {
-    margin: 0;
-    height: auto;
-    width: 200px;
-    float: right;
-    padding: 0px;
+.imageContainer {
+    margin: 0 auto;
+    width: 880px;
 }
 
 #bench {
-    margin: 40px 10px;
+    margin: 20px;
 }
 
 #cardiogram {
-    margin: 10px;
-    float: right;
-}
-
-#dumbbell {
-    margin: 10px;
-    float: left;
+    margin: 20px;
 }
 
 #food {
-    margin: 15px;
-    float: right;
+    margin: 20px;
 }
 
 #fruit {
- margin: 25px;
- float: left;   
-}
-
-#juice {
-    margin: 40px 10px;
-}
-
-#restaurant {
-    margin: 10px;
-    float: right;
+ margin: 20px; 
 }
 
 #strawberry {
-    margin: 10px;
-    float: left;
+    margin: 20px;
 }
 
 #water-bottle {
-    margin: 15px;
-    float: right;
+    margin: 20px;
 }
 
 #weight {
-    margin: 25px;
- float: left;
+    margin: 20px;
+}
+
+#juice {
+    margin: 20px;
 }
 
 .quoteBox {
@@ -162,15 +135,16 @@ h4 {
 }
 
 .quote {
-    color: greenyellow;
+    color: white;
     font-size: 25px;
     text-align: center;
+    text-shadow: 2px 2px #000000;
 }
 
 .quoteAuthor {
-    color: greenyellow;
+    color: white;
     text-align: center;
-    
+    text-shadow: 2px 2px #000000;
 }
 
 body {

@@ -21,27 +21,22 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
     </div>
      
      <div class="bottomContainer">
-         
-        <div class="imageBox1">
-          <img id="bench" src="images/bench.png">
-          <img id="cardiogram" src="images/cardiogram.png">
-          <img id="dumbbell" src="images/dumbbell.png">
-          <img id="food" src="images/food.png">
-          <img id="fruit" src="images/fruit.png">
-        </div>
-        <div class="imageBox2">
-           <img id="juice" src="images/juice.png">
-           <img id="restaurant" src="images/restaurant.png">
-           <img id="strawberry" src="images/strawberry.png">
-           <img id="water-bottle" src="images/water-bottle.png">
-           <img id="weight" src="images/weight.png">
-         </div>
         <div class="quoteBox">
             <h3 class="quote">
             "We must let go of the life we have planned, so as to accept the one that is waiting for us."
             </h3>
             <p class="quoteAuthor">-Joseph Campbell</p>
          </div>
+     </div>
+     <div class="imageContainer">
+       <img id="food" src="images/food.png">
+        <img id="fruit" src="images/fruit.png">
+        <img id="water-bottle" src="images/water-bottle.png">
+        <img id="weight" src="images/weight.png">
+        <img id="bench" src="images/bench.png">
+        <img id="cardiogram" src="images/cardiogram.png">
+        <img id="strawberry" src="images/strawberry.png">
+        <img id="juice" src="images/juice.png">
      </div>
      
  </body>
