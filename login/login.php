@@ -18,7 +18,7 @@
       <input type="text" placeholder="Email"/>
       <input type="password" placeholder="Password"/>
       <button>login</button>
-      <p class="message">Not registered? <a href="register.php">Create an account.</a></p>
+      <p class="message">Not registered? <a href="register.php">Create an account</a></p>
     </form>
   </div>
 </div>

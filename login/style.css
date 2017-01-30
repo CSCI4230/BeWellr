@@ -279,11 +279,13 @@ a {
   background: #43A047;
 }
 .form .message {
-  margin: 15px 0 0;
+  margin: 20px 0 0;
+  padding-top: 10px;
   color: #b3b3b3;
   font-size: 12px;
 }
 .form .message a {
+  font-size: 15px;
   color: #4CAF50;
   text-decoration: none;
 }
