@@ -4,10 +4,26 @@
   * All database connection variables
   *
   * Database Setup Information:
-  *   DB Name should be: bewellr
-  *   Table Name should be: User_Data
-  *   6 columns:  Email (varchar 255), SaltedHash (varchar 255), Salt (varchar 255),
-  *               FirstName (varchar 255), LastName (varchar 255), and Data (text)
+  * DB Name should be: bewellr
+  * Table: User_Data
+  *     Fields:
+  *         user_id         bigint(255)
+  *         email           varchar(255)
+  *         saltedhash      varchar(255)
+  *         firstname       varchar(255)
+  *         lastname        varchar(255)
+  *         dob             date
+  *         weight          int(50)
+  *         gender          varchar(6)
+  *         workstatus      varchar(200)
+  *         organization    varchar(200)
+  *         occupation      varchar(200)
+  *         ethnicity       varchar(200)
+  *         maritalstatus   varchar(200)
+  *         education       varchar(200)
+  * Table: Quotes
+  *     Fields:
+  *         quote           text
   *
   * Set the definition for DB_USER to the admin username for your database.
   * Set the definition for DB_PASSWORD to that account's password.
