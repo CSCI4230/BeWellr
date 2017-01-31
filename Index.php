@@ -15,7 +15,7 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
 			</div>
 			<div class="wrap">
 				<a href="login.php" class="button">Log In</a>
-				<a href="#" class="button2">Continue as Guest</a>
+				<a href="guest.php" class="button2">Continue as Guest</a>
 				<a href="#" class="button3">Learn More</a>
 			</div>
     </div>
