@@ -1,5 +1,4 @@
-<?php include 'header.php';
-?>
+<?php include 'header.php';?>
 <div class="container2">
 <?php
 	$fileName;
@@ -11,9 +10,10 @@
 		$fileName = "young_adult_survey_questions.txt";
 	}
 	
-	else (isset($_GET['olderAdult']) && empty ($_GET['olderAdult'])) {
+	else if (isset($_GET['olderAdult']) && empty ($_GET['olderAdult'])) {
 		$fileName = "young_adult_survey_questions.txt";
 	}
+	
 	$names=file($fileName);
 	foreach($names as $name)
 	{?>
