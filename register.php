@@ -1,34 +1,64 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+include '\db_connect\db_config.php';
+//connect to MySQL
+if ( ! empty( $_POST ) ) {
+$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+
+//Check our connection
+if ( $mysqli->connect_error ) {
+	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
+}	
+//Insert our data.  Look at DB_Config file to set up your local database
+$sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
+VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
+'{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
+'{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}',
+'{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
+$insert = $mysqli->query($sql);
+
+//Print response from MySQL
+if ( $insert ) {
+	echo "Success!  Row ID: {$mysqli->insert_id}";
+}
+else{
+	die("Error: {$mysqli->errno} : {$mysqli->error}");
+}
+}
+?>
+
+
         <h1>Register</h1>
     <div class="login-page">
         <div class="form">
-        
-            <p>Please fill in the boxes below</p>
-            <input type="text" placeholder="First Name"/>
-            <input type="text" placeholder="Last Name"/>
-            <input type="date" placeholder="Date of Birth"/>
-            <input type="number" placeholder="Weight"/>
-            <input type="number" placeholder="Height in Inches"/>
-            <input type="email" placeholder="Email"/>
-            <input type="password" placeholder="Password"/>
+            <form method="post" action="">
+			<p>Please fill in the boxes below</p>
+            <input name ="firstname"  type="text" placeholder="First Name"/>
+            <input name ="lastname"  type="text" placeholder="Last Name"/>
+            <input name ="dob" type="date" placeholder="Date of Birth"/>
+            <input name="weight" type="number" placeholder="Weight"/>
+            <input name="height" type="number" placeholder="Height in Inches"/>
+            <input name="email" type="email" placeholder="Email"/>
+            <input name="password" type="password" placeholder="Password"/>
             
             <br> Gender <br>
-            <select name="Gender" class="occupation">
+            <select name="gender" type="gender" class="gender">
             <option value="Select">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             </select>
-            
+			
+			
             <br> Work Status <br>
-            <select name="Gender" class="occupation">
+            <select name="workstatus" type="workstatus" class="workstatus">
             <option value="Select">Select</option>
             <option value="Unemployed">Unemployed</option>
             <option value="Full Time">Full Time</option>
             <option value="Part Time">Part Time</option>    
             </select>
             
+			
             <br> My Organization <br>
-            <select name="My Organization" class="occupation">
+            <select name="organization" type="organization" class="organization">
             <option value="Select">Select</option>
             <option value="East Carolina University">East Carolina University</option>
             <option value="ECU School of Medicine">ECU School of Medicine</option>
@@ -38,7 +68,7 @@
             </select>
             
             <br> Occupation <br> 
-            <select name="Occupation" class="occupation">
+            <select name="occupation" type="occupation" class="occupation">
             <option value="Select">Select</option>
             <option value="Attendant">Attendant</option>
             <option value="Baker">Baker</option>
@@ -109,7 +139,7 @@
             </select>
             
             <br> Ethnic Background <br>
-            <select name="Ethnic" class="occupation">
+            <select name="ethnicity" type="ethnicity" class="ethnicity">
             <option value="Select">Select</option>
             <option value="White">White</option>
             <option value="Native American">Native American</option>
@@ -120,7 +150,7 @@
             </select>
             
             <br> Marital Status <br>
-            <select name="Marital Status" class="occupation">
+            <select name="maritalstatus" type="maritalstatus" class="maritalstatus">
             <option value="Select">Select</option>
             <option value="Never Married">Never Married</option>
             <option value="Married">Married</option>
@@ -132,7 +162,7 @@
             </select>
             
             <br> Education Level <br>
-            <select name="Education Level" class="occupation">
+            <select name="education" type="education" class="education">
             <option value="Select">Select</option>
             <option value="Some Highschool">Some Highschool</option>
             <option value="Highschool Graduate">Highschool Graduate</option>
@@ -141,7 +171,8 @@
             <option value="Masters">Masters</option>
             <option value="Doctorate">Doctorate</option>
             </select>
-            
-            <button>Register</button>
+			
+			<button>Register</button>
+			</form>
         </div>
     </div>
