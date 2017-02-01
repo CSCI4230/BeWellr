@@ -1,5 +1,5 @@
 <?php include 'header.php';
-include '\db_connect\db_config.php';
+include 'db_connect\db_config.php';
 //connect to MySQL
 if ( ! empty( $_POST ) ) {
 $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
@@ -8,7 +8,7 @@ $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
 if ( $mysqli->connect_error ) {
 	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
 }	
-//Insert our data.  Look at DB_Config file to set up your local database
+//Insert our data.  Look at DB_Config file to 
 $sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
 VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
 '{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
@@ -23,6 +23,9 @@ if ( $insert ) {
 else{
 	die("Error: {$mysqli->errno} : {$mysqli->error}");
 }
+
+//Close the connection
+$mysqli->close();
 }
 ?>
 
