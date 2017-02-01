@@ -304,3 +304,40 @@ a {
   border-radius: 10px;
   box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+.border{
+    text-align: left;
+}
+ .borderblock {
+    border-color: #ccc;
+    border-width: 3px;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 0px 1525px 10px 0px;
+    padding: 4px;
+  }
+        
+ .border2 {
+    text-align: center;
+    color: #76b852;
+    border-color: #76b852;
+    border-width: 4px;
+    border-bottom-style: groove;
+    margin: 10px 10px 0px 0px;
+    padding: 3px
+  }
+ 
+  .qPadding {
+      padding: 10px 0px 0px 0px;
+      font-size: 17px;
+    }
+
+.container2 {
+    width: 1200px;
+    height: auto;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}

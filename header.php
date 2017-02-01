@@ -10,7 +10,7 @@
 <div class = "navbar">
  <ul>
 	<li><a href="Index.php">Home</a></li>
-	<li id="account"><a href="surveyYA.php">Account</a></li>
+	<li id="account"><a href="account.php">Account</a></li>
 	<li><a href="contact.php">Contact</a></li>
 	<li><a href="about.asp">About</a></li>
      <li><a href="credits.php">Credits</a></li>

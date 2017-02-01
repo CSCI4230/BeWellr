@@ -6,10 +6,14 @@
     
 <div class="guest-ages-section">
   <div class="form">
-    <form class="guest-ages">
-      <p class="message">Select your age range.</a></p>
-      <button>Young Adult (under 18)</button>
-      <button>Adult (18-30)</button>
+      <p class="message">Select your age range.</p>
+    <form class="guest-ages" action="surveyYA.php">
+        <button>Young Adult (under 18)</button>
+      </form>
+      <form class="guest-ages">
+        <button>Adult (18-30)</button>
+      </form>
+      <form class="guest-ages">
       <button>Older Adult (over 30)</button>
     </form>
   </div>
