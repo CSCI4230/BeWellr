@@ -85,6 +85,7 @@ if ( ! empty( $_POST ) )
 }
 ?>
 
+<html>
 <!--This is an error message.-->
 <div class="alert alert-error">
  <?= $_SESSION['message'] ?>
@@ -240,4 +241,4 @@ if ( ! empty( $_POST ) )
 			</form>
         </div>
     </div>
-
+</html>
