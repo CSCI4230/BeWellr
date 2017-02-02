@@ -1,36 +1,57 @@
 <?php include 'header.php';
 include 'db_connect\db_config.php';
+$_SESSION['message'] = '';
 //connect to MySQL
 if ( ! empty( $_POST ) ) {
-$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+	session_start();
+	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
 
-//Check our connection
-if ( $mysqli->connect_error ) {
+	//Check our connection
+	if ( $mysqli->connect_error ) {
 	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
-}	
-//Insert our data.  Look at DB_Config file to 
-$sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
-VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
-'{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
-'{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}',
-'{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
-$insert = $mysqli->query($sql);
+	}	
+	
+	$password = $_POST['password'];
+	$password2 = $_POST['password2'];
+	//Check for matching password
+	if ($password == $password2) {
+		//create user
+		//Insert our data.  Look at DB_Config file to 
+		$sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
+		VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
+		'{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
+		'{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}',
+		'{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
+		$insert = $mysqli->query($sql);
+		$_SESSION['message'] = "You are now logged in.";
+		$username = $_POST['email'];
+		$_SESSION['username'] = $username;
+		header("location: welcome.php"); //redirect to home
 
-//Print response from MySQL
-if ( $insert ) {
-	echo "Success!  Row ID: {$mysqli->insert_id}";
-}
-else{
-	die("Error: {$mysqli->errno} : {$mysqli->error}");
-}
+		//Print response from MySQL
+		if ( $insert ) {
+		echo "Success!  Row ID: {$mysqli->insert_id}";
+		}
+		else{
+		die("Error: {$mysqli->errno} : {$mysqli->error}");
+		}
+	}
+	else {
+	$_SESSION['message'] = "The two passwords do not match";
+	}
 
 //Close the connection
 $mysqli->close();
 }
 ?>
 
+<!--This is an error message.-->
+<div class="alert alert-error">
+ <?= $_SESSION['message'] ?>
+</div>
 
         <h1>Register</h1>
+	
     <div class="login-page">
         <div class="form">
             <form method="post" action="">
@@ -40,11 +61,11 @@ $mysqli->close();
             <input name ="dob" type="date" placeholder="Date of Birth"/>
             <input name="weight" type="number" placeholder="Weight"/>
             <input name="height" type="number" placeholder="Height in Inches"/>
-            <input name="email" type="email" placeholder="Email"/>
-            <input name="password" type="password" placeholder="Password"/>
-            
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <input name="password2" type="password" placeholder="Confirm Password" required/>
             <br> Gender <br>
-            <select name="gender" type="gender" class="gender">
+            <select name="gender" type="gender" class="occupation">
             <option value="Select">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -52,7 +73,7 @@ $mysqli->close();
 			
 			
             <br> Work Status <br>
-            <select name="workstatus" type="workstatus" class="workstatus">
+            <select name="workstatus" type="workstatus" class="occupation">
             <option value="Select">Select</option>
             <option value="Unemployed">Unemployed</option>
             <option value="Full Time">Full Time</option>
@@ -61,7 +82,7 @@ $mysqli->close();
             
 			
             <br> My Organization <br>
-            <select name="organization" type="organization" class="organization">
+            <select name="organization" type="organization" class="occupation">
             <option value="Select">Select</option>
             <option value="East Carolina University">East Carolina University</option>
             <option value="ECU School of Medicine">ECU School of Medicine</option>
@@ -142,7 +163,7 @@ $mysqli->close();
             </select>
             
             <br> Ethnic Background <br>
-            <select name="ethnicity" type="ethnicity" class="ethnicity">
+            <select name="ethnicity" type="ethnicity" class="occupation">
             <option value="Select">Select</option>
             <option value="White">White</option>
             <option value="Native American">Native American</option>
@@ -153,7 +174,7 @@ $mysqli->close();
             </select>
             
             <br> Marital Status <br>
-            <select name="maritalstatus" type="maritalstatus" class="maritalstatus">
+            <select name="maritalstatus" type="maritalstatus" class="occupation">
             <option value="Select">Select</option>
             <option value="Never Married">Never Married</option>
             <option value="Married">Married</option>
@@ -165,7 +186,7 @@ $mysqli->close();
             </select>
             
             <br> Education Level <br>
-            <select name="education" type="education" class="education">
+            <select name="education" type="education" class="occupation">
             <option value="Select">Select</option>
             <option value="Some Highschool">Some Highschool</option>
             <option value="Highschool Graduate">Highschool Graduate</option>
