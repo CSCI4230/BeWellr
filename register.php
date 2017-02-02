@@ -1,15 +1,14 @@
 <?php include 'header.php';
-include 'db_connect\db_config.php';
 $_SESSION['message'] = '';
 
-//connect to MySQL
-// include db connect class
-require_once __DIR__ . 'db_connect/db_connect.php';
+// include the db connect file
+// the file is required, so if it isn't there, this file will not be executed
+require_once __DIR__ . '/db_connect/db_connect.php';
 
 
 if ( ! empty( $_POST ) ) 
 {
-
+    //connect to MySQL
 	$mysqli = new DB_CONNECT();
 	$password = $_POST['password'];
 	$password2 = $_POST['password2'];   
