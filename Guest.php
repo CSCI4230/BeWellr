@@ -8,7 +8,7 @@
   <div class="form">
       <p class="message">Select your age range.</p>
     <form class="guest-ages" action="survey.php?youngAdult" method = "post">
-        <input type = "submit" value = "Young Adult (under 18)">
+        <button>Young Adult (under 18)</button>
       </form>
       <form class="guest-ages" action="survey.php?Adult" method="post">
         <button>Adult (18-30)</button>

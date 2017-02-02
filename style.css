@@ -277,7 +277,7 @@ a {
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form:hover,.form button:active,.form button:focus {
+.form button:active,.form button:focus {
   background: #43A047;
 }
 .form .message {
