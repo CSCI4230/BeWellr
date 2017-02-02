@@ -31,8 +31,8 @@
   * Set DB_SERVER to the server address. If you're running a local database for testing, keep it localhost.
   */
     
-    define('DB_USER', "username"); // db user
-    define('DB_PASSWORD', "password"); // db password (mention your db password here)
+    define('DB_USER', "root"); // db user
+    define('DB_PASSWORD', "root"); // db password (mention your db password here)
     define('DB_DATABASE', "bewellr"); // database name
     define('DB_SERVER', "localhost");// db server
 ?>
