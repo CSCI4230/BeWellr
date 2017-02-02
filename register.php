@@ -7,20 +7,27 @@ $_SESSION['message'] = '';
 require_once __DIR__ . 'db_connect/db_connect.php';
 
 
-if ( ! empty( $_POST ) ) {
+if ( ! empty( $_POST ) ) 
+{
 
 	$mysqli = new DB_CONNECT();
 	$password = $_POST['password'];
 	$password2 = $_POST['password2'];   
 	
 	//Check for matching password
-	if ($password == $password2) {
+	if ($password == $password2) 
+	{
 		//create user
 		//Insert our data.  Look at DB_Config file to 
+		
+		// Create salted hash for the password
+		$saltedhash = password_hash($Password, PASSWORD_DEFAULT);
+		    
 		$sql = 
 		    "INSERT INTO user_data 
-		    ( 
+		    (
 		        email, 
+		        saltedhash,
 		        firstname, 
 		        lastname, 
 		        dob, 
@@ -36,7 +43,8 @@ if ( ! empty( $_POST ) ) {
 		    ) 
 		    VALUES 
 		    ( 
-		        '{$mysqli->real_escape_string($_POST['email'])}', 
+		        '{$mysqli->real_escape_string($_POST['email'])}',
+		        '{$mysqli->real_escape_string($_POST['saltedhash'])}',
 		        '{$mysqli->real_escape_string($_POST['firstname'])}', 
 		        '{$mysqli->real_escape_string($_POST['lastname'])}',
 		        '{$mysqli->real_escape_string($_POST['dob'])}', 
@@ -58,19 +66,22 @@ if ( ! empty( $_POST ) ) {
 		header("location: welcome.php"); //redirect to home
 
 		//Print response from MySQL
-		if ( $insert ) {
-		echo "Success!  Row ID: {$mysqli->insert_id}";
+		if ( $insert ) 
+		{
+		    echo "Success!  Row ID: {$mysqli->insert_id}";
 		}
-		else{
-		die("Error: {$mysqli->errno} : {$mysqli->error}");
+		else
+		{
+		    die("Error: {$mysqli->errno} : {$mysqli->error}");
 		}
 	}
-	else {
-	$_SESSION['message'] = "The two passwords do not match";
+	else 
+	{
+	    $_SESSION['message'] = "The two passwords do not match";
 	}
 
-//Close the connection
-$mysqli->close();
+    //Close the connection
+    $mysqli->close();
 }
 ?>
 
