@@ -21,7 +21,7 @@ if ( ! empty( $_POST ) )
 		//Insert our data.  Look at DB_Config file to 
 		
 		// Create salted hash for the password
-		$saltedhash = password_hash($Password, PASSWORD_DEFAULT);
+		$saltedhash = password_hash($password, PASSWORD_DEFAULT);
 		    
 		$sql = 
 		    "INSERT INTO user_data 
@@ -44,7 +44,7 @@ if ( ! empty( $_POST ) )
 		    VALUES 
 		    ( 
 		        '{$mysqli->real_escape_string($_POST['email'])}',
-		        '{$mysqli->real_escape_string($_POST['saltedhash'])}',
+		        '{$mysqli->real_escape_string($saltedhash)}',
 		        '{$mysqli->real_escape_string($_POST['firstname'])}', 
 		        '{$mysqli->real_escape_string($_POST['lastname'])}',
 		        '{$mysqli->real_escape_string($_POST['dob'])}', 
