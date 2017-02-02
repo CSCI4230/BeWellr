@@ -7,7 +7,7 @@
 	}
 	
 	else if (isset($_GET['Adult']) && empty ($_GET['Adult'])) {
-		$fileName = "young_adult_survey_questions.txt";
+		$fileName = "adult_survey.txt";
 	}
 	
 	else if (isset($_GET['olderAdult']) && empty ($_GET['olderAdult'])) {
