@@ -1,27 +1,57 @@
 <?php include 'header.php';
 include 'db_connect\db_config.php';
 $_SESSION['message'] = '';
-//connect to MySQL
-if ( ! empty( $_POST ) ) {
-	session_start();
-	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
 
-	//Check our connection
-	if ( $mysqli->connect_error ) {
-	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
-	}	
-	
+//connect to MySQL
+// include db connect class
+require_once __DIR__ . 'db_connect/db_connect.php';
+$db = new DB_CONNECT();
+
+
+if ( ! empty( $_POST ) ) {
+
+	$mysqli = new DB_CONNECT();
 	$password = $_POST['password'];
-	$password2 = $_POST['password2'];
+	$password2 = $_POST['password2'];   
+	
 	//Check for matching password
 	if ($password == $password2) {
 		//create user
 		//Insert our data.  Look at DB_Config file to 
-		$sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
-		VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
-		'{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
-		'{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}',
-		'{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
+		$sql = 
+		    "INSERT INTO user_data 
+		    ( 
+		        email, 
+		        firstname, 
+		        lastname, 
+		        dob, 
+		        weight, 
+		        height, 
+		        gender, 
+		        workstatus, 
+		        organization, 
+		        occupation, 
+		        ethnicity, 
+		        maritalstatus, 
+		        education
+		    ) 
+		    VALUES 
+		    ( 
+		        '{$mysqli->real_escape_string($_POST['email'])}', 
+		        '{$mysqli->real_escape_string($_POST['firstname'])}', 
+		        '{$mysqli->real_escape_string($_POST['lastname'])}',
+		        '{$mysqli->real_escape_string($_POST['dob'])}', 
+		        '{$mysqli->real_escape_string($_POST['weight'])}', 
+		        '{$mysqli->real_escape_string($_POST['height'])}',
+		        '{$mysqli->real_escape_string($_POST['gender'])}', 
+		        '{$mysqli->real_escape_string($_POST['workstatus'])}', 
+		        '{$mysqli->real_escape_string($_POST['organization'])}', 
+		        '{$mysqli->real_escape_string($_POST['occupation'])}',
+		        '{$mysqli->real_escape_string($_POST['ethnicity'])}', 
+		        '{$mysqli->real_escape_string($_POST['maritalstatus'])}', 
+		        '{$mysqli->real_escape_string($_POST['education'])}'  
+            )";
+            
 		$insert = $mysqli->query($sql);
 		$_SESSION['message'] = "You are now logged in.";
 		$username = $_POST['email'];
@@ -200,3 +230,4 @@ $mysqli->close();
 			</form>
         </div>
     </div>
+
