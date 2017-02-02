@@ -5,7 +5,6 @@ $_SESSION['message'] = '';
 //connect to MySQL
 // include db connect class
 require_once __DIR__ . 'db_connect/db_connect.php';
-$db = new DB_CONNECT();
 
 
 if ( ! empty( $_POST ) ) {
