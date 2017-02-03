@@ -2,8 +2,9 @@
 
 <html>
  <body>
- <?php 
+ <?php
 	include 'header.php';
+  include 'db_connect\quoteGenerator.php';
 ?>
    <h2>Welcome to BeWell'r</h2>
 		<div class="container">
@@ -19,13 +20,11 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
 				<a href="#" class="button3">Learn More</a>
 			</div>
     </div>
-     
+
      <div class="bottomContainer">
         <div class="quoteBox">
-            <h3 class="quote">
-            "We must let go of the life we have planned, so as to accept the one that is waiting for us."
-            </h3>
-            <p class="quoteAuthor">-Joseph Campbell</p>
+            <h3 class="quote"><?php echo $quoteText; ?></h3>
+            <p class="quoteAuthor"><?php echo $quoteAuthor; ?></p>
          </div>
      </div>
      <div class="imageContainer">
@@ -38,6 +37,6 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
         <img id="strawberry" src="images/strawberry.png">
         <img id="juice" src="images/juice.png">
      </div>
-     
+
  </body>
 </html>
