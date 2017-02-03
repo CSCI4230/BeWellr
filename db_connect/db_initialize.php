@@ -45,7 +45,7 @@
     }
 
     // sql to create table
-    $sql = "CREATE TABLE User_Data (
+    $sql = "CREATE TABLE user_data (
     user_id bigint(255) AUTO_INCREMENT KEY,
     email varchar(255),
     saltedhash varchar(255),
@@ -53,6 +53,7 @@
     lastname varchar(255),
     dob date,
     weight int(50),
+    height int(50),
     gender varchar(6),
     workstatus varchar(200),
     organization varchar(200),
@@ -81,7 +82,7 @@
     }
 
     // sql to create table
-    $sql = "CREATE TABLE Quotes (
+    $sql = "CREATE TABLE quotes (
     quote text
     )";
 
@@ -105,7 +106,7 @@
     }
 
     // sql to create table
-    $sql = "CREATE TABLE Groups (
+    $sql = "CREATE TABLE groups (
     groupname tinytext,
     members text
     )";
