@@ -11,7 +11,7 @@
 include 'db_connect\db_config.php';
 
 // check for required post data
-if (isset($_POST['userID']) && isset($_POST['password']) {
+if (isset($_POST['userID']) && isset($_POST['password'])) {
     
     // parse post data into variables
     $userID = $_POST['userID'];
@@ -39,5 +39,5 @@ else
 {
     // required field is missing
     return false;
-} 
+}
 ?>
