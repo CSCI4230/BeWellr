@@ -6,7 +6,7 @@
 </head>
  <body>
   <div class="creditsContainer">
-    <h3 class="credits">Site Content Credits</h3>
+    <h3 class="credits"><u>Site Content Credits</u></h3>
     <div class="textContainer">
       <p>The <img id="foodSmall" src="images/foodSmall.png"> Icon was made by <a href="http://flaticon.com/authors/freepik" target="_blank">freepik</a> at <a href="http://www.flaticon.com/" target="_blank">flaticon.com</a></p>
       <p>The <img id="fruitSmall" src="images/fruitSmall.png"> Icon was made by <a href="http://www.flaticon.com/authors/eight-black-dots" target="_blank">eight-black-dots</a> at <a href="http://www.flaticon.com/" target="_blank">flaticon.com</a></p>
