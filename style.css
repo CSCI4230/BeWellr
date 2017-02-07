@@ -1,5 +1,6 @@
 .navbar{
 	margin: 0;
+    padding: 0;
 	width: 100%;
 }
 .navbar ul {
@@ -426,4 +427,26 @@ body {
   .popup{
     width: 70%;
   }
+}
+
+.creditsContainer {
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    height: 120%;
+    background-color: white;
+}
+
+.textContainer {
+	padding: 20px;
+	text-align: center;
+    height: auto;
+}
+
+.credits {
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Sahitya', serif;
+	margin-bottom: 0;
 }
