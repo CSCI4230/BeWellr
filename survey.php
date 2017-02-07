@@ -32,8 +32,8 @@
 <?php }
 ?>
     
-    <div class="survey">
+    <form class="survey" action="#" method="post">
         <button>Submit</button>
-    </div>
+    </form>
  </div>
 
