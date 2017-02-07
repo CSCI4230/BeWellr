@@ -1,48 +1,53 @@
-<?php include 'header.php';
-include 'db_connect\db_config.php';
-$_SESSION['message'] = '';
-//connect to MySQL
-if ( ! empty( $_POST ) ) {
-	session_start();
-	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+<?php 
+    include 'header.php';
+    
+    // the file is required, so if it isn't there, this file will not be executed
+    require_once __DIR__ . '/db_connect/db_config.php';
 
-	//Check our connection
-	if ( $mysqli->connect_error ) {
-	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
-	}	
+    $_SESSION['message'] = '';
+
+    //connect to MySQL
+    if ( ! empty( $_POST ) ) {
+	    session_start();
+	    $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+
+	    //Check our connection
+	    if ( $mysqli->connect_error ) {
+	        die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
+	    }	
 	
-	$password = $_POST['password'];
-	$password2 = $_POST['password2'];
-	//Check for matching password
-	if ($password == $password2) {
-		//create user
-		//Insert our data.  Look at DB_Config file to 
-		$sql = "INSERT INTO user_data ( email, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) 
-		VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}',
-		'{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', 
-		'{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}',
-		'{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
-		$insert = $mysqli->query($sql);
-		$_SESSION['message'] = "You are now logged in.";
-		$username = $_POST['email'];
-		$_SESSION['username'] = $username;
-		header("location: welcome.php"); //redirect to home
+	    $password = $_POST['password'];
+	    $password2 = $_POST['password2'];
+	    
+	    // Create salted hash for the password
+	    $saltedhash = password_hash($password, PASSWORD_DEFAULT);
+	    
+	    //Check for matching password
+	    if ($password == $password2) {
+		    //create user
+		    //Insert our data.  Look at DB_Config file to 
+		    $sql = "INSERT INTO user_data ( email, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '$saltedhash', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}', '{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', '{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}', '{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
+		    $insert = $mysqli->query($sql);
+		    $_SESSION['message'] = "You are now logged in.";
+		    $username = $_POST['email'];
+		    $_SESSION['username'] = $username;
+		    header("location: welcome.php"); //redirect to home
 
-		//Print response from MySQL
-		if ( $insert ) {
-		echo "Success!  Row ID: {$mysqli->insert_id}";
-		}
-		else{
-		die("Error: {$mysqli->errno} : {$mysqli->error}");
-		}
-	}
-	else {
-	$_SESSION['message'] = "The two passwords do not match";
-	}
+		    //Print response from MySQL
+		    if ( $insert ) {
+		        echo "Success!  Row ID: {$mysqli->insert_id}";
+		    }
+		    else{
+		        die("Error: {$mysqli->errno} : {$mysqli->error}");
+		    }
+	    }
+	    else {
+	        $_SESSION['message'] = "The two passwords do not match";
+	    }
 
-//Close the connection
-$mysqli->close();
-}
+        //Close the connection
+        $mysqli->close();
+    }
 ?>
 
 <!--This is an error message.-->
