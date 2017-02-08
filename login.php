@@ -4,12 +4,33 @@
   session_start();
 	
   include_once 'header.php';
-  require_once __DIR__ . '/db_connect/db_config.php';
-  include 'db_connect/verify_password.php';
+  require_once __DIR__ . '/db_connect/verify_password.php';
+  
+       /* $email = $_POST['email'];
+      $password = $_POST['password'];
+      
+    // retrieve the users hash
+    $sql = "SELECT saltedhash FROM user_data WHERE email = $email";
+    $hash = $mysqli->query($sql);
+    // verify the password is correct
+   
+      if (password_verify($password, $hash);)
+      {
+          $_SESSION['email'] = $_POST['email'];
+          header("Location: welcome.php");
+      }
+      else
+      {
+          echo "Invalid Email or Password";
+      }*/
   
   if ($_POST && !empty($_POST['email']) && !empty($_POST['password']) )
   {
-      // connect to database
+  
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      
+      /*// connect to database
       $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 
       // check connection
@@ -18,15 +39,19 @@
           die('Connection error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error);
       }
 
-      $username = $_POST['email'];
-      $pwd = $_POST['password'];
+      // retrieve the users hash
+      $sql = "SELECT saltedhash FROM user_data WHERE email = '$email'";
+      $result = $mysqli->query($sql);
 
-      $sql = "SELECT user_id FROM user_data WHERE email = '$username' ";
-      $try = $mysqli->query($sql);
+      $assoc = $result->fetch_assoc();
+      $hash = $assoc['saltedhash'];
+
+      // verify the password is correct
+      $correct = password_verify($password, $hash);*/
       
-      $row = $try->fetch_assoc();
+      $result = verifyPassword($email, $password);
 
-      if ($sql && verifyPassword($row['user_id'], $pwd))
+      if ($result)
       {
           $_SESSION['email'] = $_POST['email'];
           header("Location: welcome.php");
@@ -35,6 +60,8 @@
       {
           echo "Invalid Email or Password";
       }
+      
+      
   }
 ?>
     

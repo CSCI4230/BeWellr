@@ -8,26 +8,31 @@
  *      password - the string being compared against the user's password
  */
 
-include 'db_connect/db_config.php';
+include 'db_config.php';
  
-function verifyPassword($user_id, $password){
+function verifyPassword($email, $password){
     
-    // establish a connection to the database
-    $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+      // connect to database
+      $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 
-	//Check our connection
-	if ( $mysqli->connect_error ) {
-	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
-	}	
+      // check connection
+      if ($mysqli->connect_error)
+      {
+          die('Connection error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error);
+      }
 
-    // retrieve the users hash
-    $sql = "SELECT saltedhash FROM User_Data WHERE user_id = $user_id";
-    $hash = $mysqli->query($sql);
-    $row = $hash->fetch_assoc();
-    // verify the password is correct
-    return password_verify($password, $row['saltedhash']);
+      // retrieve the users hash
+      $sql = "SELECT saltedhash FROM user_data WHERE email = '$email'";
+      $result = $mysqli->query($sql);
 
-    //Close the connection
-    $mysqli->close();
+      $assoc = $result->fetch_assoc();
+      $hash = $assoc['saltedhash'];
+      
+      //Close the connection
+      $mysqli->close();
+    
+      // verify the password is correct
+      return password_verify($password, $hash);
+
 }
 ?>
