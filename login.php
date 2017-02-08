@@ -6,48 +6,11 @@
   include_once 'header.php';
   require_once __DIR__ . '/db_connect/verify_password.php';
   
-       /* $email = $_POST['email'];
-      $password = $_POST['password'];
-      
-    // retrieve the users hash
-    $sql = "SELECT saltedhash FROM user_data WHERE email = $email";
-    $hash = $mysqli->query($sql);
-    // verify the password is correct
-   
-      if (password_verify($password, $hash);)
-      {
-          $_SESSION['email'] = $_POST['email'];
-          header("Location: welcome.php");
-      }
-      else
-      {
-          echo "Invalid Email or Password";
-      }*/
-  
   if ($_POST && !empty($_POST['email']) && !empty($_POST['password']) )
   {
   
       $email = $_POST['email'];
       $password = $_POST['password'];
-      
-      /*// connect to database
-      $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-
-      // check connection
-      if ($mysqli->connect_error)
-      {
-          die('Connection error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error);
-      }
-
-      // retrieve the users hash
-      $sql = "SELECT saltedhash FROM user_data WHERE email = '$email'";
-      $result = $mysqli->query($sql);
-
-      $assoc = $result->fetch_assoc();
-      $hash = $assoc['saltedhash'];
-
-      // verify the password is correct
-      $correct = password_verify($password, $hash);*/
       
       $result = verifyPassword($email, $password);
 
