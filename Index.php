@@ -10,9 +10,7 @@
 		<div class="container">
 			<div class="bioBox">
 				<h4>What is BeWell'r All About?</h4>
-				<p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.
-Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy....</p>
+				<p>This BeWell’r system has been developed with your health in mind. BeWell’r is designed to assess, educate, and evaluate lifestyles, while providing reinforcing data for health promoting actions in an easy to understand format. These tools align with the National Wellness Institute’s (NWI) mission and core qualities by helping professionals and organizations develop lifestyles that have been shown to support optimal individual and community health and wellness. BeWell’r provides a multidimensional educational lifestyle assessment of positive actions that include the 6 NWI dimensions of wellness, physical, social, emotional, spiritual, intellectual and occupational, plus an additional dimension of wellness - environment.</p>
 			</div>
 			<div class="wrap">
 				<a href="login.php" class="button">Log In</a>
