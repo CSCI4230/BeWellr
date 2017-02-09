@@ -11,7 +11,13 @@
 <div class = "navbar">
  <ul>
 	<li><a href="Index.php">Home</a></li>
-	<li id="account"><a href="account.php">Account</a></li>
+	<li class="dropdown">
+    <a href="#" class="dropbtn" >Account</a>
+    <div class="dropdown-content">
+      <a href="login.php">Log in</a>
+      <a href="register.php">Sign up</a>
+    </div>
+  </li>
 	<li><a href="contact.php">Contact</a></li>
 	<li><a href="about.asp">About</a></li>
      <li><a href="credits.php">Credits</a></li>
