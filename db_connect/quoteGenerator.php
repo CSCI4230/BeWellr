@@ -16,7 +16,7 @@ $quoteID = rand(1,5);
 
 //SQL query that fetches the quote text and quote author when the quote id matches
 //the random number generated
-$query = "SELECT quoteText, quoteAuthor FROM Quote_Table WHERE quoteID = $quoteID";
+$query = "SELECT quoteText, quoteAuthor FROM quote_table WHERE quoteID = $quoteID";
 
 $result = mysqli_query($connection, $query);
 
