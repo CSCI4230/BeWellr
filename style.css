@@ -1,5 +1,6 @@
 .navbar{
 	margin: 0;
+    padding: 0;
 	width: 100%;
 }
 .navbar ul {
@@ -25,7 +26,7 @@
 
 /* Change the link color to #111 (black) on hover */
 .navbar li a:hover {
-	
+
     color: #76b852;
 }
 
@@ -47,6 +48,7 @@ h4 {
     font-family: 'Kaushan Script', cursive;
     font-size: 30px;
     padding-top: 15px;
+    margin: 0;
 }
 
 .bioBox p {
@@ -55,7 +57,7 @@ h4 {
     z-index: 100;
     font-family: 'Farsan', cursive;
     font-size: 25px;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .container {
@@ -74,6 +76,7 @@ h4 {
     overflow: hidden;
     padding-right: 15px;
     padding-left: 15px;
+    padding-bottom: 15px;
 }
 
 .bottomContainer {
@@ -102,7 +105,7 @@ h4 {
 }
 
 #fruit {
- margin: 20px; 
+ margin: 20px;
 }
 
 #strawberry {
@@ -162,7 +165,7 @@ body {
     min-width: 1024px;
     padding: 0;
     margin: 0;
-    
+
 }
 
 .wrap {
@@ -213,10 +216,6 @@ body {
 .wrap a.button3:hover {
 	color: rgba(30, 22, 54, 0.6);
 	box-shadow: rgba(255,255,255, 0.3) 0 0px 0px 2px inset;
-}
-
-#account {
-    float: right;
 }
 
 .login-page {
@@ -341,7 +340,7 @@ body {
     margin: 0px 1525px 10px 0px;
     padding: 4px;
   }
-        
+
  .border2 {
     text-align: center;
     color: #76b852;
@@ -351,7 +350,7 @@ body {
     margin: 10px 10px 0px 0px;
     padding: 3px
   }
- 
+
   .qPadding {
       padding: 10px 0px 0px 0px;
       font-size: 17px;
@@ -374,7 +373,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
@@ -385,18 +384,19 @@ body {
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 25% auto;
   padding: 20px;
-  background: #fff;
+  background: #a8ffc9;
+	opacity: .7;
   border-radius: 5px;
   width: 30%;
   position: relative;
-  transition: all 5s ease-in-out;
+  transition: all 2s ease-in-out;
 }
 
 .popup h2 {
   margin-top: 0;
-  color: #333;
+  color: #000000;
   font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {
@@ -409,6 +409,7 @@ body {
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: #06D85F;
 }
@@ -424,4 +425,69 @@ body {
   .popup{
     width: 70%;
   }
+}
+
+.creditsContainer {
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    height: 120%;
+    background-color: white;
+}
+
+.textContainer {
+	padding: 20px;
+	text-align: center;
+    height: auto;
+}
+
+.credits {
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Sahitya', serif;
+	margin-bottom: 0;
+}
+
+.survey button{
+     font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 10%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+li.dropdown {
+    float: right;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

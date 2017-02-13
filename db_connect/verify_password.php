@@ -1,43 +1,38 @@
 <?php     
  
 /*
- * verify_password.php returns true if the password input matches the true password, and false otherwise
+ * verifyPassword returns true if the password input matches the true password, and false otherwise
  *
  * Parameters: 
- *      userID - the identifier of the user whose password is being verified
+ *      userid - the identifier of the user whose password is being verified
  *      password - the string being compared against the user's password
  */
+
+include 'db_config.php';
  
-include 'db_connect\db_config.php';
-
-// check for required post data
-if (isset($_POST['userID']) && isset($_POST['password'])) {
+function verifyPassword($email, $password){
     
-    // parse post data into variables
-    $userID = $_POST['userID'];
-    $password = $_POST['password'];
+      // connect to database
+      $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+
+      // check connection
+      if ($mysqli->connect_error)
+      {
+          die('Connection error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error);
+      }
+
+      // retrieve the users hash
+      $sql = "SELECT saltedhash FROM user_data WHERE email = '$email'";
+      $result = $mysqli->query($sql);
+
+      $assoc = $result->fetch_assoc();
+      $hash = $assoc['saltedhash'];
+      
+      //Close the connection
+      $mysqli->close();
     
-    // establish a connection to the database
-    $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
+      // verify the password is correct
+      return password_verify($password, $hash);
 
-	//Check our connection
-	if ( $mysqli->connect_error ) {
-	die( 'connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect-error );
-	}	
-
-    // retrieve the users hash
-    $sql = "SELECT saltedhash FROM User_Data WHERE user_id = $userID";
-    $hash = $mysqli->query($sql);
-
-    // verify the password is correct
-    return password_verify($password, $hash);
-
-    //Close the connection
-    $mysqli->close();
-}
-else 
-{
-    // required field is missing
-    return false;
 }
 ?>
