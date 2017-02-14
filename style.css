@@ -57,7 +57,6 @@ h4 {
     z-index: 100;
     font-family: 'Farsan', cursive;
     font-size: 25px;
-    padding-top: 10px;
 }
 
 .container {
@@ -67,16 +66,14 @@ h4 {
 }
 
 .bioBox {
-    height: 500px;
+    height: 550px;
     width: 500px;
     background-color: #000000;
     opacity: .8;
     margin: left;
     word-wrap: normal;
     overflow: hidden;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-bottom: 15px;
+		padding: 0px 15px;
 }
 
 .bottomContainer {
