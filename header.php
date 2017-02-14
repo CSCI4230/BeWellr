@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Farsan" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sansita+One" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet">
  </head>
 
 <div class = "navbar">
@@ -14,8 +14,9 @@
 	<li class="dropdown">
     <a href="#" class="dropbtn" >Account</a>
     <div class="dropdown-content">
-      <a href="login.php">Log in</a>
-      <a href="register.php">Sign up</a>
+      <a href="login.php">Log In</a>
+      <a href="register.php">Sign Up</a>
+      <a href="logout.php">Log Off</a>
     </div>
   </li>
 	<li><a href="contact.php">Contact</a></li>
