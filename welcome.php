@@ -12,7 +12,7 @@
 			<h4>Welcome, <?php echo $_SESSION['username'] ?> </h4>
 		</div>
 		<div class="wrap">
-				<a href="login.php" class="button">Placeholder Button</a>
+				<a href="logout.php" class="button">Log Out</a>
 				<a href="guest.php" class="button2">Placeholder Button</a>
 				<a href="#" class="button3">Placeholder Button</a>
 			</div>
