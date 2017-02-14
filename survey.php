@@ -1,4 +1,7 @@
-<?php include 'header.php';?>
+<?php 
+	include 'functions.php';
+	logged_in_redirect();
+include 'header.php';?>
 <div class="container2">
 <?php
 	$fileName;
