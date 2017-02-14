@@ -5,8 +5,8 @@
  <?php
 	include 'header.php';
      include 'functions.php';
-	session_start();
-     protect_page();
+	protect_page();
+    
 ?>
 	<h2>Welcome!</h2>
 	<div class="container">
