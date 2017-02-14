@@ -2,14 +2,14 @@
 
 <html>
  <body>
- <?php 
+ <?php
 	include 'header.php';
 	session_start();
 ?>
 	<h2>Welcome!</h2>
 	<div class="container">
 		<div class="biobox">
-			<h4>Welcome, <?php echo $_SESSION['username'] ?> </h4>
+			<h4>Welcome, <?php echo $_SESSION['email'] ?> </h4>
 		</div>
 		<div class="wrap">
 				<a href="logout.php" class="button">Log Out</a>
@@ -35,6 +35,6 @@
         <img id="strawberry" src="images/strawberry.png">
         <img id="juice" src="images/juice.png">
      </div>
-     
+
  </body>
 </html>
