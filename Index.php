@@ -4,6 +4,7 @@
  <body>
  <?php
 	include 'header.php';
+	
   include 'db_connect\quoteGenerator.php';
 ?>
    <h2>Welcome to BeWell'r</h2>
