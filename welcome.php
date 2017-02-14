@@ -2,7 +2,7 @@
 
 <html>
  <body>
- <?php 
+ <?php
 	include 'header.php';
 	session_start();
 ?>
@@ -35,6 +35,6 @@
         <img id="strawberry" src="images/strawberry.png">
         <img id="juice" src="images/juice.png">
      </div>
-     
+
  </body>
 </html>
