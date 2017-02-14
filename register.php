@@ -1,7 +1,7 @@
 <?php 
-    include 'header.php';
-    include 'functions.php';
-		logged_in_redirect();
+include 'functions.php';
+		logged_in_redirect();    
+include 'header.php';
     // the file is required, so if it isn't there, this file will not be executed
     require_once __DIR__ . '/db_connect/db_config.php';
 
@@ -32,7 +32,7 @@
 		    $_SESSION['message'] = "You are now logged in.";
 		    $username = $_POST['email'];
 		    $_SESSION['username'] = $username;
-		    header("location: welcome.php"); //redirect to home
+		    header("location:login.php"); //redirect to home
 
 		    //Print response from MySQL
 		    if ( $insert ) {
