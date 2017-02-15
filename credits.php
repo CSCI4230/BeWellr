@@ -5,7 +5,7 @@
   <?php include 'header.php'; ?>
 </head>
  <body>
-  <div class="creditsContainer">
+  <div class="middleContainer">
     <h3 class="credits"><u>Site Content Credits</u></h3>
     <div class="textContainer">
       <p>The <img id="foodSmall" src="images/foodSmall.png"> Icon was made by <a href="http://flaticon.com/authors/freepik" target="_blank">freepik</a> at <a href="http://www.flaticon.com/" target="_blank">flaticon.com</a></p>

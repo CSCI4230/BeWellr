@@ -6,24 +6,25 @@
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sansita+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"> 
  </head>
 
 <div class = "navbar">
  <ul>
 	<li><a href="Index.php">Home</a></li>
 	<li class="dropdown">
-    <a href="#" class="dropbtn" >Account</a>
+    <a href="#" class="dropbtn">Account</a>
     <div class="dropdown-content">
       <?php include 'functions.php';
         if (logged_in() == true) { ?>
             <a href="logout.php">Log Out</a>
-            <a href="#">Settings</a>
+            <a href="account.php">My Account</a>
     <?php    }
         else if (logged_in() == false) { ?>
             <a href="login.php">Log In</a>
             <a href="register.php">Sign Up</a>
     <?php    }
-        ?> 
+        ?>
     </div>
   </li>
 	<li><a href="contact.php">Contact</a></li>

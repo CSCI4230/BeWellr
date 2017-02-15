@@ -424,7 +424,7 @@ body {
   }
 }
 
-.creditsContainer {
+.middleContainer {
     position: absolute;
     margin-left: 10%;
     margin-right: 10%;
@@ -436,7 +436,7 @@ body {
 .textContainer {
 	padding: 20px;
 	text-align: center;
-    height: auto;
+  height: auto;
 }
 
 .credits {
@@ -487,4 +487,8 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.accountInfo {
+	font-family: 'Playfair Display', serif;
 }
