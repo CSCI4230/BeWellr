@@ -1,7 +1,7 @@
 <?php 
-include 'functions.php';
-		logged_in_redirect();    
 include 'header.php';
+		logged_in_redirect();    
+
     // the file is required, so if it isn't there, this file will not be executed
     require_once __DIR__ . '/db_connect/db_config.php';
 

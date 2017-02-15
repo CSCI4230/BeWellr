@@ -1,7 +1,7 @@
 <?php
-	include 'functions.php';
-	logged_in_redirect();
 	include 'header.php';
+	logged_in_redirect();
+	
 ?>
     
 <h1>Guest Age Selection</h1>

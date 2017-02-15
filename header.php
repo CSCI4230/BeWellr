@@ -14,9 +14,16 @@
 	<li class="dropdown">
     <a href="#" class="dropbtn" >Account</a>
     <div class="dropdown-content">
-      <a href="login.php">Log In</a>
-      <a href="register.php">Sign Up</a>
-      <a href="logout.php">Log Off</a>
+      <?php include 'functions.php';
+        if (logged_in() == true) { ?>
+            <a href="logout.php">Log Out</a>
+            <a href="#">Settings</a>
+    <?php    }
+        else if (logged_in() == false) { ?>
+            <a href="login.php">Log In</a>
+            <a href="register.php">Sign Up</a>
+    <?php    }
+        ?> 
     </div>
   </li>
 	<li><a href="contact.php">Contact</a></li>

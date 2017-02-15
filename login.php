@@ -1,11 +1,11 @@
 <?php
-	include 'functions.php';
 	
+include_once 'header.php';	
   ini_set('display_errors',1); // for error checking
   error_reporting(E_ALL);      // for error checking
 	logged_in_redirect();
 	
-  include_once 'header.php';
+  
   require_once __DIR__ . '/db_connect/verify_password.php';
   
   if ($_POST && !empty($_POST['email']) && !empty($_POST['password']) )

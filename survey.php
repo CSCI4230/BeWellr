@@ -1,7 +1,7 @@
 <?php 
-	include 'functions.php';
+include 'header.php';	
 	logged_in_redirect();
-include 'header.php';?>
+?>
 <div class="container2">
 <?php
 	$fileName;
