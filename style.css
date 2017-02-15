@@ -490,5 +490,45 @@ li.dropdown {
 }
 
 .accountInfo {
+	padding-left: 10px;
 	font-family: 'Playfair Display', serif;
+}
+
+.personalInfo {
+	padding-left: 10px;
+	font-family: 'Playfair Display', serif;
+}
+
+.deleteContainer {
+	width: 70%;
+}
+
+#deleteParagraph {
+	padding-left: 10px;
+	font-size: 15px;
+	font-family: 'Playfair Display', serif;
+}
+
+.btn {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #555555;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  background-color: #f3f3f3;
+}
+
+.btn-danger {
+  color: #fff;
+  border-color: #ab3326;
+  background-color: #c0392b;
+}
+
+.btn-danger:hover {
+  background-color: #ab3326;
+}
+
+.deleteButton {
+	padding-left: 10px;
 }

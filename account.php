@@ -15,5 +15,12 @@
       <p>Height: </p>
       <p>Gender: </p>
     </div>
+    <div class="deleteContainer">
+      <h3 class="accountInfo"><u>Delete Account</u></h3>
+      <p id="deleteParagraph">This action is permanent; think twice before proceeding!</p>
+      <div class="deleteButton">
+        <button class="btn btn-danger" id="delete">Delete Account</button>
+      </div>
+    </div>
  </body>
 </html>
