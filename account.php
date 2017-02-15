@@ -18,8 +18,10 @@
   	echo "";
   }
 
+  //current logged in user
   $logged_in = $_SESSION['email'];
 
+  //SQL query that pulls user information from the user_data table
   $query = "SELECT email, firstname, lastname, dob, weight, height, gender FROM user_data WHERE email = '$logged_in'";
 
   $result = mysqli_query($connection, $query);
