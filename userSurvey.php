@@ -1,10 +1,9 @@
 <?php
 	include 'header.php';
-	logged_in_redirect();
-	
+	protect_page();
 ?>
     
-<h1>Guest Selection</h1>
+<div class = "suvContainer">You are about to embark on a journey to a healthier life. But before you do so, we need you to take a pre-assessment survey. This will allow us to collect data needed and also see the progress you make over the next 4-weeks compared to how you start.</div>
     
 <div class="guest-ages-section">
   <div class="form">

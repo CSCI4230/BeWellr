@@ -1,6 +1,5 @@
 <?php 
 include 'header.php';	
-	logged_in_redirect();
 ?>
 <div class="container2">
 <?php

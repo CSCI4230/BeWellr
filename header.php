@@ -13,7 +13,7 @@
  <ul>
 	<li><a href="Index.php">Home</a></li>
 	<li class="dropdown">
-    <a href="#" class="dropbtn">Account</a>
+    <a href="welcome.php" class="dropbtn">Account</a>
     <div class="dropdown-content">
       <?php include 'functions.php';
         if (logged_in() == true) { ?>

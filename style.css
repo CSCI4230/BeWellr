@@ -532,3 +532,15 @@ li.dropdown {
 .deleteButton {
 	padding-left: 10px;
 }
+.suvContainer {
+    text-align: center;
+    color: black;
+	font-family: 'Kaushan Script', cursive;
+	font-size: 28px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    background-color: white;
+}

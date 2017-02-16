@@ -66,6 +66,6 @@
       <div class="deleteButton">
         <button class="btn btn-danger" id="delete">Delete Account</button>
       </div>
-    </div>
+      </div></div>
  </body>
 </html>
