@@ -4,7 +4,7 @@
  <body>
  <?php
 	include 'header.php';
-  include 'db_connect\db_config.php';
+  include 'db_connect/db_config.php';
   //connect to MySQL
   $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
   //current logged in user
