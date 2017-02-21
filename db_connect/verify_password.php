@@ -8,7 +8,7 @@
  *      password - the string being compared against the user's password
  */
 
-include 'db_config.php';
+//include 'db_config.php';
  
 function verifyPassword($email, $password){
     

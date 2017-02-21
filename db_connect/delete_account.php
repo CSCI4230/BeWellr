@@ -7,7 +7,7 @@
  *      email - the email of the user whose account is being deleted
  */
 
-include 'db_config.php';
+//include 'db_config.php';
  
 function deleteAccount($email)
 {
