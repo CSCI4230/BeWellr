@@ -27,7 +27,7 @@ function deleteAccount($email)
     $result = $mysqli->query($sql);
 
     // test if the row was deleted
-    if (mysql_affected_rows() > 0) 
+    if (mysqli_affected_rows() > 0) 
     {     
         //row was deleted
         $mysqli->close();

@@ -5,7 +5,7 @@ include_once 'header.php';
   error_reporting(E_ALL);      // for error checking
 	logged_in_redirect();
 
-
+require_once __DIR__ . '/db_connect/db_config.php';
   require_once __DIR__ . '/db_connect/verify_password.php';
 
   if ($_POST && !empty($_POST['email']) && !empty($_POST['password']) )
