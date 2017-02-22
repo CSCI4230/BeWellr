@@ -2,15 +2,15 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-include_once ~/db_connect/db_config.php;
-include_once ~/db_connect/verify_password.php;
-include_once ~/db_connect/delete_account.php;
-include_once ~/db_connect/create_account.php;
 
-final class BackendTest extends TestCase
+require_once __DIR__ . '/../db_connect/db_config.php';
+require_once __DIR__ . '/../db_connect/create_account.php';
+require_once __DIR__ . '/../db_connect/delete_account.php';
+require_once __DIR__ . '/../db_connect/verify_password.php';
+
+final class BackendTest extends \PHPUnit_Framework_TestCase
 {
-    
-    public function testVerifyPasswordReturnsTrueWhenCorrect(): void
+    public function testVerifyPasswordReturnsTrueWhenCorrect()
     {
         $email = 'correct@test.com';
         $password = 'correctTest';
@@ -20,7 +20,7 @@ final class BackendTest extends TestCase
         $this->assertEquals($result, true);
     }
 
-    public function testVerifyPasswordReturnsFalseWhenIncorrect(): void
+    public function testVerifyPasswordReturnsFalseWhenIncorrect()
     {
         $email = 'incorrect@test.com';
         $correctPassword = 'correctTest';
