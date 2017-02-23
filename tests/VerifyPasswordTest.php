@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+//declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
@@ -8,7 +8,7 @@ require_once __DIR__ . '/../db_connect/create_account.php';
 require_once __DIR__ . '/../db_connect/delete_account.php';
 require_once __DIR__ . '/../db_connect/verify_password.php';
 
-final class BackendTest extends \PHPUnit_Framework_TestCase
+final class VerifyPasswordTest extends \PHPUnit_Framework_TestCase
 {
     public function testVerifyPasswordReturnsTrueWhenCorrect()
     {
