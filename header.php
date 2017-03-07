@@ -6,7 +6,10 @@
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sansita+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sahitya" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  </head>
 
 <div class = "navbar">
@@ -28,7 +31,6 @@
     </div>
   </li>
 	<li><a href="contact.php">Contact</a></li>
-	<li><a href="about.asp">About</a></li>
-     <li><a href="credits.php">Credits</a></li>
+  <li><a href="credits.php">Credits</a></li>
 </ul>
 </div>
