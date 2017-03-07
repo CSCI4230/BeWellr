@@ -17,7 +17,7 @@
 
     <div class="interventionMain">
         <div class="tab">
-            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'London')">Wellness Questions</a>
+            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Wellness Questions</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Paris')">Week Averages</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Tokyo')">Overall Averages</a>
         </div>
@@ -36,6 +36,11 @@
             <h3>Tokyo</h3>
             <p>Tokyo is the capital of Japan.</p>
         </div>
+        
+        <script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
   </div>
 
 </body>
