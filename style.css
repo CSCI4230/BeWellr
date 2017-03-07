@@ -66,14 +66,14 @@ h4 {
 }
 
 .bioBox {
-    height: 550px;
+    height: 580px;
     width: 500px;
     background-color: #000000;
     opacity: .8;
     margin: left;
     word-wrap: normal;
     overflow: hidden;
-		padding: 0px 15px;
+		padding: 0px 20px;
 }
 
 .bottomContainer {
@@ -545,6 +545,7 @@ li.dropdown {
     background-color: white;
 }
 
+/* Beginning of intervention page */
 .interventionMain {
     position: absolute;
     margin-left: 2.5%;
@@ -580,7 +581,7 @@ div.tab a:hover {
 
 /* Create an active/current tablink class */
 div.tab a:focus, .active {
-    background-color: #ccc;
+    background-color: #87D2A0;
 }
 
 /* Style the tab content */
