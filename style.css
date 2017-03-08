@@ -551,7 +551,7 @@ li.dropdown {
     margin-left: 2.5%;
     margin-right: 2.5%;
     width: 95%;
-    height: 120%;
+    height: auto;
     background-color: white;
 }
 

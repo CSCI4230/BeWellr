@@ -5,7 +5,7 @@
   <meta charset="utf-8">    
   <?php
    include 'header.php';
-   logged_in_redirect();
+   protect_page();
   ?>
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -28,8 +28,59 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
-            <h3>London</h3>
-            <p>London is the capital city of England.</p>
+            <h3>Coping</h3>
+    <?php
+    $fileName = "coping.txt";
+	$names=file($fileName);
+	foreach($names as $name)
+	{?>
+				<h6 class="border"><?php echo $name?></h6>
+				<form>
+				<div class="qPadding" id="q1Bullets">
+        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+        <label class="border3"><input type="radio" name="No">No</label> 
+      </div>
+      </form>
+    
+<?php }
+?>
+    <h3>Food</h3>
+    <?php
+    $fileName = "food.txt";
+	$names=file($fileName);
+	foreach($names as $name)
+	{?>
+				<h6 class="border"><?php echo $name?></h6>
+				<form>
+				<div class="qPadding" id="q1Bullets">
+        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+        <label class="border3"><input type="radio" name="No">No</label> 
+      </div>
+      </form>
+    
+<?php }
+?>
+        <h3>Physical Activity</h3>
+    <?php
+    $fileName = "physical.txt";
+	$names=file($fileName);
+	foreach($names as $name)
+	{?>
+				<h6 class="border"><?php echo $name?></h6>
+				<form>
+				<div class="qPadding" id="q1Bullets">
+        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+        <label class="border3"><input type="radio" name="No">No</label> 
+      </div>
+      </form>
+    
+<?php }
+?>
+    
+    <form class="survey" action="#" method="post">
+        <button>Submit</button>
+    </form>
+
         </div>
 
         <div id="weekAverages" class="tabcontent">

@@ -36,7 +36,7 @@
 		<div class="wrap">
 				<a href="logout.php" class="button">Log Out</a>
 				<a href="userSurvey.php" class="button2">Pre-Assessment</a>
-				<a href="#" class="button3">Placeholder Button</a>
+				<a href="intervention.php" class="button3">Intervention</a>
 			</div>
     </div>
      <div class="bottomContainer">
