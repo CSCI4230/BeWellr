@@ -1,6 +1,6 @@
 <?php 
 include 'header.php';	
-include 'db_connect\db_config.php';
+include 'db_connect/db_config.php';
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 
 ?>
