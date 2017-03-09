@@ -1,5 +1,27 @@
 <?php
 	include 'header.php';
+	include 'db_connect/db_config.php';
+	
+	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+    if (logged_in()) {  
+      $user_id = get_userid($connection);
+    }
+    else {
+	    $user_id = 0;
+    }	
+    
+    $queryIfAlreadyTaken = $connection->query("SELECT * from preassessment_results where user_id = $user_id");
+    if($queryIfAlreadyTaken){
+        if($queryIfAlreadyTaken->num_rows == 0){
+		    header('Location: surveyResult.php');
+		}
+		else echo "no preassessment result found";
+    }
+    else echo "query failed";
+    
+    
+	protect_page();
+/*	include 'header.php';
 	protect_page();
 ?>
     
@@ -18,4 +40,5 @@
       <button>Retired</button>
     </form>
   </div>
-</div>
+</div>*/?>
+
