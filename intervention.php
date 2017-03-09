@@ -1,7 +1,3 @@
-<?php
-    include 'db_connect/db_config.php';
-    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-?>
 <!doctype html>
 
 <html lang="en">
@@ -41,106 +37,65 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <h3>Coping</h3>
-<<<<<<< HEAD
-  <?php
-    $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
-    while ($row = mysqli_fetch_assoc($coping))
-	  {?>
-	     <h6 class="border"><?php echo $row["question"]?></h6>
-			 <form>
-  			 <div class="qPadding" id="q1Bullets">
-           <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-           <label class="border3"><input type="radio" name="No">No</label> 
-         </div>
-       </form>
-=======
     <?php
-    $fileName = "coping.txt";
-	$names=file($fileName);
-	$copingArray; //creates an array for holding Coping answer values
-	$copingQCount = 0; //Counts the coping questions
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
+    
+  $copingArray; //creates an array for holding Coping answer values
+  $copingQCount = 0; //Counts the coping questions
+  $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
+ while ($row = mysqli_fetch_assoc($coping))
+  {?>
+        <h6 class="border"><?php echo $row["question"]?></h6>
+        <form>
+        <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
         <label class="border3"><input type="radio" name="No" value=0>No</label> 
       </div>
       </form>
-	  
->>>>>>> 44b7fcd7a472fb9076c5ccb0f4ccb68fa58ade31
+    
     
 <?php 
-	$copingQCount++;
-	}
-
+  $copingQCount++;
+  }
 ?>
     <h3>Food</h3>
     <?php
-<<<<<<< HEAD
-    $food = mysqli_query($connection, "SELECT * from intervention where food = 1");
-    while ($row = mysqli_fetch_assoc($food))
-	  {?>
-			<h6 class="border"><?php echo $row["question"]?></h6>
-			<form>
-  			<div class="qPadding" id="q1Bullets">
-          <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-          <label class="border3"><input type="radio" name="No">No</label> 
-        </div>
-=======
-    $fileName = "food.txt";
-	$names=file($fileName);
-	$foodArray; //create an array for holding Food answer values
-	$foodQCount = 0; //counts the food questions
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
+  $foodArray; //create an array for holding Food answer values
+  $foodQCount = 0; //counts the food questions
+  $food = mysqli_query($connection, "SELECT * from intervention where food = 1");
+  while ($row = mysqli_fetch_assoc($food))
+  {?>
+        <h6 class="border"><?php echo $row["question"]?></h6>
+        <form>
+        <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
         <label class="border3"><input type="radio" name="No" value=0>No</label> 
       </div>
->>>>>>> 44b7fcd7a472fb9076c5ccb0f4ccb68fa58ade31
       </form>
     
 <?php
-	$foodQCount++;
-	}
-	
+  $foodQCount++;
+  }
+  
 ?>
         <h3>Physical Activity</h3>
     <?php
-<<<<<<< HEAD
-    $physical = mysqli_query($connection, "SELECT * from intervention where physical = 1");
-    while ($row = mysqli_fetch_assoc($physical))
-	  {?>
-			<h6 class="border"><?php echo $row["question"]?></h6>
-			<form>
-  			<div class="qPadding" id="q1Bullets">
-          <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-          <label class="border3"><input type="radio" name="No">No</label> 
-        </div>
-=======
-    $fileName = "physical.txt";
-	$names=file($fileName);
-	$physicalArray; //creates an array for holding physical activity answer values
-	$physicalQCount = 0; //counts the physical activity questions
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
+  $physicalArray; //creates an array for holding physical activity answer values
+  $physicalQCount = 0; //counts the physical activity questions
+  $physical = mysqli_query($connection, "SELECT * from intervention where physical = 1");
+  while ($row = mysqli_fetch_assoc($physical))
+  {?>
+        <h6 class="border"><?php echo $row["question"]?></h6>
+        <form>
+        <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
         <label class="border3"><input type="radio" name="No" value=0>No</label> 
       </div>
->>>>>>> 44b7fcd7a472fb9076c5ccb0f4ccb68fa58ade31
       </form>
     
 <?php
-	$physicalQCount++;
-	}
-	
+  $physicalQCount++;
+  }
+  
 ?>
     
     <form class="survey" action="#" method="post">
