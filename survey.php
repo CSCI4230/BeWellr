@@ -104,6 +104,8 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 
 //print_r($questionArray); //this prints the array of arrays for the questions.  it's for testing.
 ?>
+    <br>
+    <br>
     <button>Submit</button>
 		</div>
     </form>
