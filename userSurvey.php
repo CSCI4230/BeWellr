@@ -10,19 +10,13 @@
 	    $user_id = 0;
     }	
     
-    $queryIfAlreadyTaken = $connection->query("SELECT * from preassessment_results where user_id = $user_id");
-    if($queryIfAlreadyTaken){
-        if($queryIfAlreadyTaken->num_rows == 0){
-		    header('Location: surveyResult.php');
-		}
-		else echo "no preassessment result found";
-    }
-    else echo "query failed";
-    
-    
-	protect_page();
-/*	include 'header.php';
-	protect_page();
+	$queryIfAlreadyTaken = $connection->query("SELECT * from preassessment_results where user_id = $user_id");
+    $isAlreadyTaken = mysqli_fetch_assoc($queryIfAlreadyTaken);
+	
+	if($isAlreadyTaken['user_id'] != NULL){
+		header('Location: surveyResult.php');
+	}
+	else {
 ?>
     
 <div class = "suvContainer">You are about to embark on a journey to a healthier life. But before you do so, we need you to take a pre-assessment survey. This will allow us to collect data needed and also see the progress you make over the next 4-weeks compared to how you start.</div>
@@ -40,5 +34,6 @@
       <button>Retired</button>
     </form>
   </div>
-</div>*/?>
-
+</div>
+<?php }
+?>
