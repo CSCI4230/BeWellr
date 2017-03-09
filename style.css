@@ -553,6 +553,7 @@ li.dropdown {
 }
 
 /* Beginning of intervention page */
+
 .interventionMain {
     position: absolute;
     margin-left: 2.5%;
@@ -561,6 +562,33 @@ li.dropdown {
     height: auto;
     background-color: white;
 }
+
+#progressbarContainer {
+	padding-top: 10px;
+	width: 80%;
+	height: 100px;
+	position: relative;
+}
+
+#progressbar {
+	color: black;
+  margin: 20px;
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+.progress-label {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+	.ui-progressbar {
+    position: relative;
+  }
 
  /* Style the tab */
 div.tab {
