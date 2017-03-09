@@ -1,5 +1,5 @@
 const CHART = document.getElementById("barChart");
-Chart.defaults.global.animation.duration = 200;
+Chart.defaults.global.animation.duration = 2000;
 var barChart = new Chart(CHART, {
 
     type: 'bar',

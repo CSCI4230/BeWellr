@@ -53,7 +53,7 @@ INSERT INTO `preassessment` (`questionid`, `question`, `YA`, `A`, `OA`, `social`
 (5, 'I make an effort to stay in contact with my family/friends.', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0),
 (6, 'I expend moderate amounts of energy when I am physically active', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0),
 (7, 'I consult a higher power for answers.', 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
-(8, 'I manage life’s situations well.', 1, 1, 1, 0, 0, 1, 0, 0, 0, 0),
+(8, "I manage life's situations well.", 1, 1, 1, 0, 0, 1, 0, 0, 0, 0),
 (9, 'I enjoy the schoolwork I do.', 1, 0, 0, 0, 1, 0, 0, 0, 0, 0),
 (10, 'I enjoy the work I do.', 0, 1, 0, 0, 1, 0, 0, 0, 0, 0),
 (11, 'I recycle.', 1, 1, 1, 0, 0, 0, 0, 0, 0, 1),
