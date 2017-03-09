@@ -107,8 +107,8 @@
 
 ?>
 
-<<<<<<< HEAD
-=======
+<!-- <<<<<<< HEAD
+======= -->
         <h3>Personal Growth</h3>
     <?php
   $personalArray; //creates an array for holding personal activity answer values
@@ -119,18 +119,18 @@
         <h6 class="border"><?php echo $row["question"]?></h6>
         <form>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
-        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
       </form>
-    
+
 <?php
   $personalQCount++;
   }
-  
+
 ?>
-    
->>>>>>> d3cb0f42f3122c138907c3d455b572425281d132
+
+<!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
     <form class="survey" action="#" method="post">
         <br/>
         <button>Submit</button>
