@@ -100,8 +100,8 @@
 
         <h3>Personal Growth</h3>
     <?php
-  $personalArray; //creates an array for holding physical activity answer values
-  $personalQCount = 0; //counts the physical activity questions
+  $personalArray; //creates an array for holding personal activity answer values
+  $personalQCount = 0; //counts the personal activity questions
   $personal = mysqli_query($connection, "SELECT * from intervention where personal = 1");
   while ($row = mysqli_fetch_assoc($personal))
   {?>
