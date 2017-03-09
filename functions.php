@@ -20,4 +20,13 @@ function logged_in() {
 		}
 	}
 	
+	function get_userid($connection){
+		$logged_in = $_SESSION['email'];
+  //SQL query that pulls user information from the user_data table
+  $query = "SELECT user_id FROM user_data WHERE email = '$logged_in'";
+  $result = mysqli_query($connection, $query);
+  $user_idArray = mysqli_fetch_array($result);
+		return $user_idArray['user_id'];
+	}
+	
 ?>

@@ -2,13 +2,12 @@
 include 'header.php';	
 include 'db_connect/db_config.php';
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-//current logged in user
-  $logged_in = $_SESSION['email'];
-  //SQL query that pulls user information from the user_data table
-  $query = "SELECT user_id FROM user_data WHERE email = '$logged_in'";
-  $result = mysqli_query($connection, $query);
-  $user_idArray = mysqli_fetch_array($result);
-  $user_id = $user_idArray['user_id'];
+if (logged_in()) {  
+  $user_id = get_userid($connection);
+}
+else {
+	$user_id = 0;
+}
 ?>
 
 <form class="survey" action="" method="post">
@@ -83,6 +82,7 @@ $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 			}
 			$count++;
 		}
+
 	$sql = "INSERT INTO preassessment_results (user_id, socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore) VALUES ($user_id, $social, $vocational, $emotional, $physical, $intellectual, $spiritual, $environmental)";
 	$insert = $connection->query($sql);
 			    //Print response from MySQL
