@@ -24,6 +24,13 @@
     text-decoration: none;
 }
 
+.chart {
+	background-color: white;
+	width: 50%;
+	margin: auto;
+}
+
+
 /* Change the link color to #111 (black) on hover */
 .navbar li a:hover {
 
