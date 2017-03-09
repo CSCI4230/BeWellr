@@ -1,3 +1,7 @@
+<?php
+    include 'db_connect/db_config.php';
+    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+?>
 <!doctype html>
 
 <html lang="en">
@@ -29,55 +33,53 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <h3>Coping</h3>
-    <?php
-    $fileName = "coping.txt";
-	$names=file($fileName);
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-        <label class="border3"><input type="radio" name="No">No</label> 
-      </div>
-      </form>
+  <?php
+    $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
+    while ($row = mysqli_fetch_assoc($coping))
+	  {?>
+	     <h6 class="border"><?php echo $row["question"]?></h6>
+			 <form>
+  			 <div class="qPadding" id="q1Bullets">
+           <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+           <label class="border3"><input type="radio" name="No">No</label> 
+         </div>
+       </form>
     
 <?php }
 ?>
     <h3>Food</h3>
     <?php
-    $fileName = "food.txt";
-	$names=file($fileName);
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-        <label class="border3"><input type="radio" name="No">No</label> 
-      </div>
+    $food = mysqli_query($connection, "SELECT * from intervention where food = 1");
+    while ($row = mysqli_fetch_assoc($food))
+	  {?>
+			<h6 class="border"><?php echo $row["question"]?></h6>
+			<form>
+  			<div class="qPadding" id="q1Bullets">
+          <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+          <label class="border3"><input type="radio" name="No">No</label> 
+        </div>
       </form>
     
 <?php }
 ?>
         <h3>Physical Activity</h3>
     <?php
-    $fileName = "physical.txt";
-	$names=file($fileName);
-	foreach($names as $name)
-	{?>
-				<h6 class="border"><?php echo $name?></h6>
-				<form>
-				<div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes">Yes</label>                 
-        <label class="border3"><input type="radio" name="No">No</label> 
-      </div>
+    $physical = mysqli_query($connection, "SELECT * from intervention where physical = 1");
+    while ($row = mysqli_fetch_assoc($physical))
+	  {?>
+			<h6 class="border"><?php echo $row["question"]?></h6>
+			<form>
+  			<div class="qPadding" id="q1Bullets">
+          <label class="border3"><input type="radio" name="Yes">Yes</label>                 
+          <label class="border3"><input type="radio" name="No">No</label> 
+        </div>
       </form>
     
 <?php }
 ?>
     
     <form class="survey" action="#" method="post">
+        <br/>
         <button>Submit</button>
     </form>
 
