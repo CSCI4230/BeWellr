@@ -36,7 +36,7 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
-            <h3>Coping</h3>
+            <h3>Interactive Behavior</h3>
     <?php
     
   $copingArray; //creates an array for holding Coping answer values
@@ -57,7 +57,7 @@
   $copingQCount++;
   }
 ?>
-    <h3>Food</h3>
+    <h3>Food Selection</h3>
     <?php
   $foodArray; //create an array for holding Food answer values
   $foodQCount = 0; //counts the food questions
