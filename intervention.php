@@ -97,6 +97,27 @@
   }
   
 ?>
+
+        <h3>Personal Growth</h3>
+    <?php
+  $personalArray; //creates an array for holding physical activity answer values
+  $personalQCount = 0; //counts the physical activity questions
+  $personal = mysqli_query($connection, "SELECT * from intervention where personal = 1");
+  while ($row = mysqli_fetch_assoc($personal))
+  {?>
+        <h6 class="border"><?php echo $row["question"]?></h6>
+        <form>
+        <div class="qPadding" id="q1Bullets">
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
+        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+      </div>
+      </form>
+    
+<?php
+  $personalQCount++;
+  }
+  
+?>
     
     <form class="survey" action="#" method="post">
         <br/>
