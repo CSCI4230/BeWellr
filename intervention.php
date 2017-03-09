@@ -45,7 +45,7 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
-            <h3>Coping</h3>
+            <h3>Interactive Behavior</h3>
     <?php
 
   $copingArray; //creates an array for holding Coping answer values
@@ -66,7 +66,7 @@
   $copingQCount++;
   }
 ?>
-    <h3>Food</h3>
+    <h3>Food Selection</h3>
     <?php
   $foodArray; //create an array for holding Food answer values
   $foodQCount = 0; //counts the food questions
@@ -107,6 +107,30 @@
 
 ?>
 
+<<<<<<< HEAD
+=======
+        <h3>Personal Growth</h3>
+    <?php
+  $personalArray; //creates an array for holding personal activity answer values
+  $personalQCount = 0; //counts the personal activity questions
+  $personal = mysqli_query($connection, "SELECT * from intervention where personal = 1");
+  while ($row = mysqli_fetch_assoc($personal))
+  {?>
+        <h6 class="border"><?php echo $row["question"]?></h6>
+        <form>
+        <div class="qPadding" id="q1Bullets">
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
+        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+      </div>
+      </form>
+    
+<?php
+  $personalQCount++;
+  }
+  
+?>
+    
+>>>>>>> d3cb0f42f3122c138907c3d455b572425281d132
     <form class="survey" action="#" method="post">
         <br/>
         <button>Submit</button>
