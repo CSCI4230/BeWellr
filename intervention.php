@@ -12,6 +12,7 @@
 	 if (!has_taken_preassessment($connection, $user_id)) {
 		 header('location: welcome.php');
 	 }
+	 print_r($_POST);
   ?>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -24,7 +25,7 @@
 
 <body>
   <script src="interventionScript.js"></script>
-
+	<form class="survey" action="" method="post"> <!--GUYS, HERE IS WHERE I PUT THE FORM START, THIS HAS TO BE WRONG!-->
     <div class="interventionMain">
 
       <div id="progressbarContainer">
@@ -43,6 +44,7 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
+			
             <h3>Interactive Behavior</h3>
     <?php
   $copingArray; //creates an array for holding Coping answer values
@@ -51,12 +53,10 @@
  while ($row = mysqli_fetch_assoc($coping))
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
-        <form>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
         <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
-      </form>
 
 
 <?php
@@ -71,12 +71,10 @@
   while ($row = mysqli_fetch_assoc($food))
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
-        <form>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
         <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
-      </form>
 
 <?php
   $foodQCount++;
@@ -90,12 +88,10 @@
   while ($row = mysqli_fetch_assoc($physical))
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
-        <form>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
         <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
-      </form>
 
 <?php
   $physicalQCount++;
@@ -112,56 +108,60 @@
   while ($row = mysqli_fetch_assoc($personal))
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
-        <form>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
         <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
-      </form>
-
 <?php
   $personalQCount++;
-  
+  } 
   $ib = 0; //interactive behavior
   $fs = 0; // food selection
   $pa = 0; // physical activity
   $pg = 0; // personal growth
+  $i=0;
+  $j;
+  $k;
+  $n;
   
   if(!empty($_POST))
   {
-	  for($i = 0 ; $i < copingQCount; $i++)
+	  for($i; $i < $copingQCount; $i++)
 	  {
-		  if($copingArray[$i] == 1)
+		  if($_POST[$i] == 1)
 		  {
 			  $ib++;
 		  }
 	  }
 	  
-	  for($j = 0; $j < foodQCount; $j++)
+	  for($j = $i; $j < $foodQCount + $copingQCount; $j++)
 	  {
-		  if($foodArray[$j] == 1)
+		  if($_POST[$j] == 1)
 		  {
 			  $fs++;
 		  }
 	  }
 	  
-	  for($k = 0; $k < physicalQCount; $k++)
+	  for($k = $j; $k < $physicalQCount + $copingQCount + $foodQCount; $k++)
 	  {
-		  if($physicalArray[$k] == 1)
+		  if($POST[$k] == 1)
 		  {
 			 $pa++;
 		  }
 	  }
 	  
-	  for($n = 0; $n < personalQCount; $n++)
+	  for($n = $k; $n < $personalQCount + $physicalQCount + copingQCount + $foodQCount; $n++)
 	  {
-		  if(personalArray[$n] == 1)
+		  if($_POST[$n] == 1)
 		  {
 			  $pg++;
 		  }
 	  }
-	  
   }
+	  echo $ib;
+	  echo $fs;
+	  echo $pa;
+	  echo $pg;
   
   $total = $ib + $fs + $pa + $pg;
   
@@ -174,7 +174,7 @@
   
   $day = 1;
   $week = 1;
-  if(mysqli_num_rows($result) > 0)
+  if(mysqli_num_rows($results) > 0)
   {
 	  $row = mysqli_fetch_assoc($results);
 	  
@@ -199,17 +199,18 @@
   $sql = "INSERT INTO intervention_results (user_id, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $week, $day, $ib, $fs, $pa, $pg, $total)";
   
   $insert = $connection->query($sql);
-  }
+  
+
 ?>
 
 <!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
-    <form class="survey" action="#" method="post">
+
         <br/>
         <button>Submit</button>
-    </form>
+
 
         </div>
-
+    </form>  <!--GUYS THIS IS WHERE I PUT THE FORM END, I THINK THIS IS RIGHT!-->
         <div id="weekAverages" class="tabcontent">
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
