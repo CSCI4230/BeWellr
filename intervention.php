@@ -126,6 +126,84 @@
 
 <?php
   $personalQCount++;
+  
+  $ib = 0; //interactive behavior
+  $fs = 0; // food selection
+  $pa = 0; // physical activity
+  $pg = 0; // personal growth
+  
+  if(!empty($_POST))
+  {
+	  for($i = 0 ; $i < copingQCount; $i++)
+	  {
+		  if($copingArray[$i] == 1)
+		  {
+			  $ib++;
+		  }
+	  }
+	  
+	  for($j = 0; $j < foodQCount; $j++)
+	  {
+		  if($foodArray[$j] == 1)
+		  {
+			  $fs++;
+		  }
+	  }
+	  
+	  for($k = 0; $k < physicalQCount; $k++)
+	  {
+		  if($physicalArray[$k] == 1)
+		  {
+			 $pa++;
+		  }
+	  }
+	  
+	  for($n = 0; $n < personalQCount; $n++)
+	  {
+		  if(personalArray[$n] == 1)
+		  {
+			  $pg++;
+		  }
+	  }
+	  
+  }
+  
+  $total = $ib + $fs + $pa + $pg;
+  
+  $post_data = array($ib, $fs, $pa, $pg);
+  
+  $query = "SELECT user_id, weekNumber, dayOfWeekNumber FROM intervention_results WHERE user_id = $user_id ORDER BY weekNumber DESC, dayOfWeekNumber DESC LIMIT 1";
+  
+  $results = mysqli_query($connection, $query);
+  
+  
+  $day = 1;
+  $week = 1;
+  if(mysqli_num_rows($result) > 0)
+  {
+	  $row = mysqli_fetch_assoc($results);
+	  
+	  $day = $row["dayOfWeekNumber"];
+	  $week = $row["weekNumber"];
+	  
+	  if( $week <= 4 && $day <= 6)
+	  {
+		 $day++; 
+	  }
+	  else if($week <= 4 && $day == 7)
+	  {
+		  $week++;
+		  $day = 1;
+	  }
+	  else
+	  {
+		  echo "ERROR:  Intervention over OR wrong week/day input";
+	  }
+  }
+  
+  $sql = "INSERT INTO intervention_results (user_id, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $week, $day, $ib, $fs, $pa, $pg, $total)";
+  
+  $insert = $connection->query($sql);
   }
 
 ?>
