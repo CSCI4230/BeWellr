@@ -3,7 +3,13 @@
 include 'header.php';
 include 'db_connect/db_config.php';
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-$user_id = get_userid($connection);
+$user_id;
+if (logged_in()) {  
+  $user_id = get_userid($connection);
+}
+else {
+	$user_id = 0;
+}
 $result = mysqli_fetch_array(mysqli_query($connection, "select count(user_id) from preassessment_results where user_id = $user_id"));
 $data = array();
 if ($result[0] > 0){
