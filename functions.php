@@ -29,4 +29,14 @@ function logged_in() {
 		return $user_idArray['user_id'];
 	}
 	
+	function has_taken_preassessment($connection, $user_id) {
+		$result = mysqli_fetch_array(mysqli_query($connection, "select count(user_id) from preassessment_results where user_id = $user_id"));
+		if ($result[0] > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 ?>
