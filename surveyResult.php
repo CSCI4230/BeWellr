@@ -12,13 +12,13 @@ else {
 }
 $result = mysqli_fetch_array(mysqli_query($connection, "select count(user_id) from preassessment_results where user_id = $user_id"));
 $data = array();
-if ($result[0] > 0){
+if ($result[0] > 0 && logged_in()){
 	 $results = mysqli_fetch_array(mysqli_query($connection, "select socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore from preassessment_results where user_id = $user_id"));
 		for($i = 0; $i < sizeof($results)/2; $i++) {
 			$data[$i] = $results[$i];
 		}
 	}
-else {
+else if (!logged_in() && isset($_SESSION['data'])) {
 	$data = $_SESSION['data'];
 }
 ?>
