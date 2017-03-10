@@ -89,7 +89,7 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 			}
 			$count++;
 		}
-	$post_data = array ($social, $vocational, $spiritual, $emotional, $physical, $intellectual, $environmental);
+	$post_data = array ($social, $vocational, $emotional, $physical, $intellectual, $spiritual, $environmental);
 	$sql = "INSERT INTO preassessment_results (user_id, socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore) VALUES ($user_id, $social, $vocational, $emotional, $physical, $intellectual, $spiritual, $environmental)";
 	$insert = $connection->query($sql);
 		    if ( $insert ) {

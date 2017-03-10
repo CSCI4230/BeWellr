@@ -4,7 +4,7 @@ var barChart = new Chart(CHART, {
 
     type: 'bar',
     data: {
-        labels: ['Social', 'Vocational', 'Spiritual', 'Emotional', 'Physical', 'Intellectual', 'Environmental'],
+        labels: ['Social', 'Vocational', 'Emotional', 'Physical', 'Intellectual',  'Spiritual','Environmental'],
 				datasets: [
         {
 					label: "Your Results",

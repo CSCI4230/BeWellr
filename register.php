@@ -37,6 +37,11 @@ include 'header.php';
 		    //Print response from MySQL
 		    if ( $insert ) {
 		        echo "Success!  Row ID: {$mysqli->insert_id}";
+						if(isset($_SESSION['data'])) {
+							$data = $_SESSION['data'];
+							$userid =	mysqli_fetch_array(mysqli_query($mysqli, "select max(user_id) from user_data"));
+							mysqli_query($mysqli, "update preassessment_results set user_id = $userid[0] where socialScore = $data[0] and vocationalScore = $data[1] and emotionalScore = $data[2] and physicalScore = $data[3] and intellectualScore = $data[4] and spiritualScore = $data[5] and environmentalScore = $data[6] and user_id = 0");
+						}
 		    }
 		    else{
 		        die("Error: {$mysqli->errno} : {$mysqli->error}");
