@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">    
+  <meta charset="utf-8">
   <?php
    include 'header.php';
    include 'db_connect/db_config.php';
@@ -13,15 +13,24 @@
 		 header('location: welcome.php');
 	 }
   ?>
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="progressbar.js"></script>
+
 </head>
 
 <body>
   <script src="interventionScript.js"></script>
 
     <div class="interventionMain">
+
+      <div id="progressbarContainer">
+        <div id="progressbar"><div class="progress-label">Loading...</div></div>
+      </div>
+
         <div class="tab">
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wellnessQuestions')" id="defaultOpen">Wellness Questions</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'weekAverages')">Week Averages</a>
@@ -36,7 +45,6 @@
             <!--Code for Questions go HERE-->
             <h3>Interactive Behavior</h3>
     <?php
-    
   $copingArray; //creates an array for holding Coping answer values
   $copingQCount = 0; //Counts the coping questions
   $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
@@ -45,13 +53,13 @@
         <h6 class="border"><?php echo $row["question"]?></h6>
         <form>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
-        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
       </form>
-    
-    
-<?php 
+
+
+<?php
   $copingQCount++;
   }
 ?>
@@ -65,15 +73,14 @@
         <h6 class="border"><?php echo $row["question"]?></h6>
         <form>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
-        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
       </form>
-    
+
 <?php
   $foodQCount++;
   }
-  
 ?>
         <h3>Physical Activity</h3>
     <?php
@@ -85,17 +92,18 @@
         <h6 class="border"><?php echo $row["question"]?></h6>
         <form>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
-        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
       </form>
-    
+
 <?php
   $physicalQCount++;
   }
-  
 ?>
 
+<!-- <<<<<<< HEAD
+======= -->
         <h3>Personal Growth</h3>
     <?php
   $personalArray; //creates an array for holding personal activity answer values
@@ -106,11 +114,11 @@
         <h6 class="border"><?php echo $row["question"]?></h6>
         <form>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>                 
-        <label class="border3"><input type="radio" name="No" value=0>No</label> 
+        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="No" value=0>No</label>
       </div>
       </form>
-    
+
 <?php
   $personalQCount++;
   
@@ -192,9 +200,9 @@
   
   $insert = $connection->query($sql);
   }
-  
 ?>
-    
+
+<!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
     <form class="survey" action="#" method="post">
         <br/>
         <button>Submit</button>
@@ -221,7 +229,7 @@
             <h3>Tokyo</h3>
             <p>Tokyo is the capital of Japan.</p>
         </div>
-        
+
         <script>
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();

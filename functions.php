@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function logged_in() {
 		return (isset($_SESSION['email'])) ? true : false;
 	}
@@ -38,5 +37,4 @@ function logged_in() {
 			return false;
 		}
 	}
-	
 ?>
