@@ -3,7 +3,18 @@
 include 'header.php';
 include 'db_connect/db_config.php';
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-$data = $_SESSION['data'];
+$user_id = get_userid($connection);
+$result = mysqli_fetch_array(mysqli_query($connection, "select count(user_id) from preassessment_results where user_id = $user_id"));
+$data = array();
+if ($result[0] > 0){
+	 $results = mysqli_fetch_array(mysqli_query($connection, "select socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore from preassessment_results where user_id = $user_id"));
+		for($i = 0; $i < sizeof($results)/2; $i++) {
+			$data[$i] = $results[$i];
+		}
+	}
+else {
+	$data = $_SESSION['data'];
+}
 ?>
 
 <h1>Preassessment Results</h1>
