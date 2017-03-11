@@ -34,7 +34,7 @@ else if (!logged_in() && isset($_SESSION['data'])) {
  
 <?php 
         if (logged_in() == true) { ?>
-            <div class = "suvContainer"><b>Thank you for taking this survey!</b> We hope you enjoyed your time with us and are weller for your efforts!</a></div>
+            <div class = "suvContainer"><b>Thank you for taking this survey!</b> We hope you enjoyed your time with us and are weller for your efforts!</div>
     <?php    }
         else if (logged_in() == false) { ?>
             <div class = "suvContainer"><b>Thank you for taking this survey!</b> If you are willing to give yourself a chance to live a better life, <a href="register.php">click here to register with BeWell`r!</a></div>
