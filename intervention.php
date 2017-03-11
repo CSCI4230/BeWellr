@@ -12,7 +12,7 @@
 	 if (!has_taken_preassessment($connection, $user_id)) {
 		 header('location: welcome.php');
 	 }
-	 print_r($_POST);
+	 //print_r($_POST); //Used For Testing $_POST Array
   ?>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -25,7 +25,7 @@
 
 <body>
   <script src="interventionScript.js"></script>
-	<form class="survey" action="" method="post"> <!--GUYS, HERE IS WHERE I PUT THE FORM START, THIS HAS TO BE WRONG!-->
+ <form class="survey" action="" method="post">
     <div class="interventionMain">
 
       <div id="progressbarContainer">
@@ -44,22 +44,24 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
-			
-            <h3>Interactive Behavior</h3>
+            
+			<h3>Interactive Behavior</h3>
     <?php
   $copingArray; //creates an array for holding Coping answer values
   $copingQCount = 0; //Counts the coping questions
   $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
+  $questionNumber=0;
  while ($row = mysqli_fetch_assoc($coping))
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
-        <label class="border3"><input type="radio" name="No" value=0>No</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
       </div>
 
 
 <?php
+$questionNumber++;
   $copingQCount++;
   }
 ?>
@@ -72,11 +74,12 @@
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
-        <label class="border3"><input type="radio" name="No" value=0>No</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
       </div>
 
 <?php
+$questionNumber++;
   $foodQCount++;
   }
 ?>
@@ -89,11 +92,12 @@
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
-        <label class="border3"><input type="radio" name="No" value=0>No</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
       </div>
 
 <?php
+  $questionNumber++;
   $physicalQCount++;
   }
 ?>
@@ -109,10 +113,12 @@
   {?>
         <h6 class="border"><?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
-        <label class="border3"><input type="radio" name="Yes" value=1>Yes</label>
-        <label class="border3"><input type="radio" name="No" value=0>No</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
+        <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
       </div>
+
 <?php
+  $questionNumber++;
   $personalQCount++;
   } 
   $ib = 0; //interactive behavior
@@ -144,13 +150,13 @@
 	  
 	  for($k = $j; $k < $physicalQCount + $copingQCount + $foodQCount; $k++)
 	  {
-		  if($POST[$k] == 1)
+		  if($_POST[$k] == 1)
 		  {
 			 $pa++;
 		  }
 	  }
 	  
-	  for($n = $k; $n < $personalQCount + $physicalQCount + copingQCount + $foodQCount; $n++)
+	  for($n = $k; $n < $personalQCount + $physicalQCount + $copingQCount + $foodQCount; $n++)
 	  {
 		  if($_POST[$n] == 1)
 		  {
@@ -158,14 +164,9 @@
 		  }
 	  }
   }
-	  echo $ib;
-	  echo $fs;
-	  echo $pa;
-	  echo $pg;
+
   
   $total = $ib + $fs + $pa + $pg;
-  
-  $post_data = array($ib, $fs, $pa, $pg);
   
   $query = "SELECT user_id, weekNumber, dayOfWeekNumber FROM intervention_results WHERE user_id = $user_id ORDER BY weekNumber DESC, dayOfWeekNumber DESC LIMIT 1";
   
@@ -204,13 +205,13 @@
 ?>
 
 <!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
-
+   
         <br/>
         <button>Submit</button>
-
+    </form>
 
         </div>
-    </form>  <!--GUYS THIS IS WHERE I PUT THE FORM END, I THINK THIS IS RIGHT!-->
+
         <div id="weekAverages" class="tabcontent">
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
