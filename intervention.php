@@ -25,8 +25,8 @@
 <body>
   <script src="interventionScript.js"></script>
 
-  /*This php section gets the number of times the user has completed the intervention questions
-  and saves the number into a variable*/
+  <!-- This php section gets the number of times the user has completed the intervention questions
+  and saves the number into a variable -->
   <?php
     //SQL query that counts the number of rows the current user has
     $query = "SELECT count(*) AS total FROM intervention_results WHERE user_id = '$user_id'";
@@ -51,8 +51,8 @@
       <div id="progressbarContainer">
         <div id="progressbar">
 
-          /*This script sets up the progress bar and updates the percentage completed every time the
-          page is loaded.*/
+          <!-- This script sets up the progress bar and updates the percentage completed every time the
+          page is loaded. -->
           <script>
             var numDays = <?php echo $totalDays ?>;
             var totalDays = 28;
