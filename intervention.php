@@ -15,21 +15,78 @@
 	 //print_r($_POST); //Used For Testing $_POST Array
   ?>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="progressbar.js"></script>
 
 </head>
 
 <body>
   <script src="interventionScript.js"></script>
+
+  /*This php section gets the number of times the user has completed the intervention questions
+  and saves the number into a variable*/
+  <?php
+    //SQL query that counts the number of rows the current user has
+    $query = "SELECT count(*) AS total FROM intervention_results WHERE user_id = '$user_id'";
+
+    $result = mysqli_query($connection, $query);
+
+      if(mysqli_num_rows($result) > 0)
+      {
+          while($row = mysqli_fetch_array($result))
+          {
+            $totalDays = $row["total"];
+          }
+      }
+      else
+      {
+          echo("No results");
+      }
+  ?>
+
  <form class="survey" action="" method="post">
     <div class="interventionMain">
-
       <div id="progressbarContainer">
-        <div id="progressbar"><div class="progress-label">Loading...</div></div>
+        <div id="progressbar">
+
+          /*This script sets up the progress bar and updates the percentage completed every time the
+          page is loaded.*/
+          <script>
+            var numDays = <?php echo $totalDays ?>;
+            var totalDays = 28;
+            var percentage = Math.round((numDays/totalDays) * 100);
+
+            $( function() {
+              var progressbar = $( "#progressbar" ),
+                progressLabel = $( ".progress-label" );
+
+              progressbar.progressbar({
+                value: false,
+                change: function() {
+                  progressLabel.text( progressbar.progressbar( "value" ) + "% Completed" );
+                },
+                complete: function() {
+                  progressLabel.text( "Intervention Complete!" );
+                }
+              });
+
+              function progress() {
+                var val = progressbar.progressbar( "value" ) || 0;
+
+                progressbar.progressbar( "value", percentage );
+
+                if ( val < 99 ) {
+                  setTimeout( progress, 90 );
+                }
+              }
+
+              setTimeout( progress, 2000 );
+            } );
+          </script>
+          <div class="progress-label">Getting your progress...</div>
+        </div>
       </div>
 
         <div class="tab">
@@ -44,7 +101,7 @@
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
             <!--Code for Questions go HERE-->
-            
+
 			<h3>Interactive Behavior</h3>
     <?php
   $copingArray; //creates an array for holding Coping answer values
@@ -120,7 +177,7 @@ $questionNumber++;
 <?php
   $questionNumber++;
   $personalQCount++;
-  } 
+  }
   $ib = 0; //interactive behavior
   $fs = 0; // food selection
   $pa = 0; // physical activity
@@ -129,7 +186,7 @@ $questionNumber++;
   $j;
   $k;
   $n;
-  
+
   if(!empty($_POST))
   {
 	  for($i; $i < $copingQCount; $i++)
@@ -139,7 +196,7 @@ $questionNumber++;
 			  $ib++;
 		  }
 	  }
-	  
+
 	  for($j = $i; $j < $foodQCount + $copingQCount; $j++)
 	  {
 		  if($_POST[$j] == 1)
@@ -147,7 +204,7 @@ $questionNumber++;
 			  $fs++;
 		  }
 	  }
-	  
+
 	  for($k = $j; $k < $physicalQCount + $copingQCount + $foodQCount; $k++)
 	  {
 		  if($_POST[$k] == 1)
@@ -155,7 +212,7 @@ $questionNumber++;
 			 $pa++;
 		  }
 	  }
-	  
+
 	  for($n = $k; $n < $personalQCount + $physicalQCount + $copingQCount + $foodQCount; $n++)
 	  {
 		  if($_POST[$n] == 1)
@@ -165,26 +222,26 @@ $questionNumber++;
 	  }
   }
 
-  
+
   $total = $ib + $fs + $pa + $pg;
-  
+
   $query = "SELECT user_id, weekNumber, dayOfWeekNumber FROM intervention_results WHERE user_id = $user_id ORDER BY weekNumber DESC, dayOfWeekNumber DESC LIMIT 1";
-  
+
   $results = mysqli_query($connection, $query);
-  
-  
+
+
   $day = 1;
   $week = 1;
   if(mysqli_num_rows($results) > 0)
   {
 	  $row = mysqli_fetch_assoc($results);
-	  
+
 	  $day = $row["dayOfWeekNumber"];
 	  $week = $row["weekNumber"];
-	  
+
 	  if( $week <= 4 && $day <= 6)
 	  {
-		 $day++; 
+		 $day++;
 	  }
 	  else if($week <= 4 && $day == 7)
 	  {
@@ -196,16 +253,16 @@ $questionNumber++;
 		  echo "ERROR:  Intervention over OR wrong week/day input";
 	  }
   }
-  
+
   $sql = "INSERT INTO intervention_results (user_id, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $week, $day, $ib, $fs, $pa, $pg, $total)";
-  
+
   $insert = $connection->query($sql);
-  
+
 
 ?>
 
 <!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
-   
+
         <br/>
         <button>Submit</button>
     </form>
