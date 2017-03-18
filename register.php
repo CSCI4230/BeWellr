@@ -25,23 +25,24 @@ include 'header.php';
 	    
 	    //Check for matching password
 	    if ($password == $password2) {
-		    //create user
-		    //Insert our data.  Look at DB_Config file to 
-		    $sql = "INSERT INTO user_data ( email, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '$saltedhash', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}', '{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', '{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}', '{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
+	    
+	        // generate a verification key
+	        $verificationKey = 'abc123'; /** TODO **/
+	        
+		    //create user in unverified_users
+		    $sql = "INSERT INTO unverified_users ( email, verificationKey, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '$verificationKey', '$saltedhash', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}', '{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', '{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}', '{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
 		    $insert = $mysqli->query($sql);
-		    $_SESSION['message'] = "You are now logged in.";
-		    $username = $_POST['email'];
-		    $_SESSION['username'] = $username;
-		    header("location:login.php"); //redirect to home
+
+            // send the user an email with the verification key
+            /**TODO*/
+
+            //redirect to verifyEmail.php with session information for email
+            $_SESSION['email'] = $mysqli->real_escape_string($_POST['email']);
+		    header("location:verifyEmail.php"); //redirect to email verification
 
 		    //Print response from MySQL
 		    if ( $insert ) {
 		        echo "Success!  Row ID: {$mysqli->insert_id}";
-						if(isset($_SESSION['data'])) {
-							$data = $_SESSION['data'];
-							$userid =	mysqli_fetch_array(mysqli_query($mysqli, "select max(user_id) from user_data"));
-							mysqli_query($mysqli, "update preassessment_results set user_id = $userid[0] where socialScore = $data[0] and vocationalScore = $data[1] and emotionalScore = $data[2] and physicalScore = $data[3] and intellectualScore = $data[4] and spiritualScore = $data[5] and environmentalScore = $data[6] and user_id = 0");
-						}
 		    }
 		    else{
 		        die("Error: {$mysqli->errno} : {$mysqli->error}");
