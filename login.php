@@ -38,6 +38,7 @@ require_once __DIR__ . '/db_connect/db_config.php';
       <input type="password" name = "password" placeholder="Password"/>
       <button>login</button>
       <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+        <p class="message">Did you already receive a verification code? <a href="verifyEmail.php">Verify your account</a></p>
     </form>
   </div>
 </div>

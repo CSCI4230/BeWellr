@@ -1,7 +1,5 @@
 <?php 
-    include 'header.php';    
-
-echo "verifyEmail hit";
+    include 'header.php';       
     // the file is required, so if it isn't there, this file will not be executed
     require_once __DIR__ . '/db_connect/db_config.php';
 
@@ -28,7 +26,7 @@ echo $_POST['email'];
 	    
 	    // set correctKey to the corresponding key value in unverified_users for the corresponding email value
         $query = "SELECT verificationKey FROM unverified_users WHERE email = '$email'";
-        $result = mysqli_query($connection, $query);
+        $result = mysqli_query($mysqli, $query);
   	    if(mysqli_num_rows($result) > 0)
   	    {
   			while($row = mysqli_fetch_array($result))
@@ -38,7 +36,6 @@ echo $_POST['email'];
   	    }
   	    else
   	    {
-echo "hi";
   			echo("No results");
   	    }
 	    
@@ -51,7 +48,7 @@ echo "hi";
             // transfer info from unverified_users to user_data
             // retrieve the information from user_data
             $query = "SELECT saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education FROM unverified_users WHERE email = '$email'";
-            $result = mysqli_query($connection, $query);
+            $result = mysqli_query($mysqli, $query);
             if(mysqli_num_rows($result) > 0)
             {
                 while($row = mysqli_fetch_array($result))
@@ -76,18 +73,22 @@ echo "hi";
                 echo("No results");
             }
             // create a new entry for the verified user into user_data
-            $sql = "INSERT INTO unverified_users ( email, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '$email', '$saltedhash', '$firstname', '$lastname', '$dob', '$weight', '$height','$gender', '$workstatus', '$organization', '$occupation', '$ethnicity', '$maritalstatus', '$education'  )";
+            $sql = "INSERT INTO user_data ( email, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '$email', '$saltedhash', '$firstname', '$lastname', '$dob', '$weight', '$height','$gender', '$workstatus', '$organization', '$occupation', '$ethnicity', '$maritalstatus', '$education'  )";
 		    $insert = $mysqli->query($sql);
-		    $_SESSION['message'] = "The account has been verified.";
-		    $username = $_POST['email'];
-		    $_SESSION['username'] = $username;
-		    header("location:login.php"); //redirect to home
 
-		    //Print response from MySQL
-		    if ( $insert ) {
-		        echo "Success!  Row ID: {$mysqli->insert_id}";
+		    if ( $insert ) 
+		    {
+		        // remove the user's entry in unverified_users
+                $query = "DELETE FROM unverified_users WHERE email = '$email'";
+                $result = mysqli_query($mysqli, $query);
+                $_SESSION['message'] = "The account has been verified.";
+		        $username = $_POST['email'];
+		        $_SESSION['username'] = $username;
+                logged_in_redirect();     		        
+		        header("location:login.php"); //redirect to home
 		    }
-		    else{
+		    else
+		    {
 		        die("Error: {$mysqli->errno} : {$mysqli->error}");
 		    }
 	    }
