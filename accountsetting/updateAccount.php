@@ -27,7 +27,6 @@
     
 <div class="Update Account">
   <div class="form">
-      <p class="message">Reset Password</p>
     <form class="Update" action="resetPassword.php" method = "post">
         <button>Password reset</button>
       </form>
