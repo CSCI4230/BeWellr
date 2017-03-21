@@ -1,44 +1,61 @@
-<html>
-<head>
-<title>Update Records </title>
-</head>
-<body>
 <?php
 include 'header.php';
-include 'db_connect/db_config.php';
-	//connect MYSQL
-	 $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-	 //Select Database
-	$myData = mysqli_select_db($con, "bewellr");
-	
-	//Update Query
-	//$sql = "SELECT * user_data WHERE user_id='7'";
-	
-	if(isset($_POST['update'])){
-		$UpdateQuery + "UPDATE user_data SET firstname-'$_POST[first]' WHERE email='$_POST[email]'";
-		mysql_query($UpdateQuery,$con);
+	include 'db_connect/db_config.php';
+	require_once __DIR__ . '/db_connect/db_config.php';
+    //ini_set('display_errors',1); // for error checking
+   // error_reporting(E_ALL);      // for error checking
 
-	};
+	//connect to MySQL
+	$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+
+	if(!$connection)
+	{
+		die("Connection error: " .mysqli_connect_error());
+	}
+	else 
+	{
+		echo "";
+	}
 	
-	//Execute the query
-	//if(mysqli_query($con,$sql))
-		//header("refresh:2; url=account.php");
-	//else
-		//	echo "Not Updated";
+	if(!empty($_POST['email']) )
+	{
+		$email = $_POST['email'];
+		$first = $_POST['newFirst'];
+		$last = $_POST['newLast'];
+		$height = $_POST['newWeight'];
+		$weight = $_POST['newHeight'];
+		$gender = $_POST['newGender'];
+	
+		if($first != null)
+		{
+			$query2 = mysqli_query($connection, "UPDATE user_data SET firstname='$first' WHERE email = '$email'");
+		}
+		if($last != null)
+		{
+			$query2 = mysqli_query($connection, "UPDATE user_data SET lastname='$last' WHERE email = '$email'");
+		}
+		if($weight != null)
+		{
+			$query2 = mysqli_query($connection, "UPDATE user_data SET weight='$weight' WHERE email = '$email'");
+		}
+		if($height != null)
+		{
+			$query2 = mysqli_query($connection, "UPDATE user_data SET height='$height' WHERE email = '$email'");
+		}
+	}
+	
 ?>
 	<h1>Account Update</h1>
     <div class="Update-page">
         <div class="form">
             <form method="post" action="">
-			<p>Update First name</p>
-			<input name="email" type="email" placeholder="email" required />
-			<input name="newname" type="text" placeholder="Update First name" required />
-			<input name="email" type="email" placeholder="Update email" required />
-			<input name="newname" type="text" placeholder="Update Last name" required />
-			<input name="email" type="email" placeholder="Update Email" required />
-			<input name="newname" type="text" placeholder="Update Weight" required />
-			<input name="email" type="email" placeholder="Update Height" required />
-			<input name="newname" type="text" placeholder="Update Gender" required />
+			<p>Enter email for confirmation</p>
+			<input name="email" type="email" placeholder="Email" required />
+			<p>Update only wanted information else leave blank</p>
+			<input name="newFirst" type="text" placeholder="Update First name" />
+			<input name="newLast" type="text" placeholder="Update Last name" />
+			<input name="newWeight" type="text" placeholder="Update Weight" />
+			<input name="newHeight" type="text" placeholder="Update Height in inches" />
 			<button>Update</button>
 			</form>
         </div>
