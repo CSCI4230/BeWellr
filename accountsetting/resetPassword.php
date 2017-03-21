@@ -24,16 +24,23 @@
 			$result = verifyPassword($email, $password);
 			$newpassword = $_POST['password2'];
 			$confirmnewpassword =$_POST['password3'];
-			  // Create salted hash for the password
+			//Create salted hash for the password
 			$saltedhash = password_hash($newpassword, PASSWORD_DEFAULT);
-			if($result)
-			{
-				$query2 = mysqli_query($connection, "UPDATE user_data SET saltedhash='$saltedhash' WHERE email = '$email'");
+			if($newpassword == $confirmnewpassword)
+			{	
+				if($result)
+				{
+					$query2 = mysqli_query($connection, "UPDATE user_data SET saltedhash='$saltedhash' WHERE email = '$email'");
+				}
+				else
+				{
+					echo "Incorrect password.";
+				}
 			}
 			else
 			{
-				echo "Incorrect password.";
-			}
+				echo "New Password does not match";
+			}	
 		}
 ?>
         <h1>Reset Password</h1>
