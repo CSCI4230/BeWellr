@@ -1,6 +1,7 @@
 <?php 
 include 'header.php';
-		logged_in_redirect();    
+require_once 'swiftmailer/lib/swift_required.php';
+logged_in_redirect();    
 
     // the file is required, so if it isn't there, this file will not be executed
     require_once __DIR__ . '/db_connect/db_config.php';
@@ -27,17 +28,30 @@ include 'header.php';
 	    if ($password == $password2) {
 	    
 	        // generate a verification key
-	        $verificationKey = 'abc123'; /** TODO **/
+	        $verificationKey = bin2hex(openssl_random_pseudo_bytes(10));
 	        
 		    //create user in unverified_users
 		    $sql = "INSERT INTO unverified_users ( email, verificationKey, saltedhash, firstname, lastname, dob, weight, height, gender, workstatus, organization, occupation, ethnicity, maritalstatus, education) VALUES ( '{$mysqli->real_escape_string($_POST['email'])}', '$verificationKey', '$saltedhash', '{$mysqli->real_escape_string($_POST['firstname'])}', '{$mysqli->real_escape_string($_POST['lastname'])}', '{$mysqli->real_escape_string($_POST['dob'])}', '{$mysqli->real_escape_string($_POST['weight'])}', '{$mysqli->real_escape_string($_POST['height'])}','{$mysqli->real_escape_string($_POST['gender'])}', '{$mysqli->real_escape_string($_POST['workstatus'])}', '{$mysqli->real_escape_string($_POST['organization'])}', '{$mysqli->real_escape_string($_POST['occupation'])}', '{$mysqli->real_escape_string($_POST['ethnicity'])}', '{$mysqli->real_escape_string($_POST['maritalstatus'])}', '{$mysqli->real_escape_string($_POST['education'])}'  )";
 		    $insert = $mysqli->query($sql);
 
+            $email = $mysqli->real_escape_string($_POST['email']);
+
             // send the user an email with the verification key
-            /**TODO*/
+            $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+              ->setUsername('bewellrverify@gmail.com')
+              ->setPassword('bewellrpassword');
+
+            $mailer = Swift_Mailer::newInstance($transport);
+
+            $message = Swift_Message::newInstance('Email Verification')
+              ->setFrom(array('abc@example.com' => 'ABC'))
+              ->setTo(array($email))
+              ->setBody($verificationKey);
+
+            $result = $mailer->send($message);
 
             //redirect to verifyEmail.php with session information for email
-            $_SESSION['email'] = $mysqli->real_escape_string($_POST['email']);
+            $_SESSION['email'] = $email;
 		    header("location:verifyEmail.php"); //redirect to email verification
 
 		    //Print response from MySQL
