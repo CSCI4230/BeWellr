@@ -24,7 +24,6 @@ include 'header.php';
 		$last = $_POST['newLast'];
 		$height = $_POST['newWeight'];
 		$weight = $_POST['newHeight'];
-		$gender = $_POST['newGender'];
 	
 		if($first != null)
 		{
@@ -42,6 +41,7 @@ include 'header.php';
 		{
 			$query2 = mysqli_query($connection, "UPDATE user_data SET height='$height' WHERE email = '$email'");
 		}
+		header('Location: account.php');
 	}
 	
 ?>
