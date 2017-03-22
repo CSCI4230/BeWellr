@@ -3,14 +3,14 @@ include 'header.php';
 require_once __DIR__ . '/db_connect/db_config.php';
 
 $_SESSION['message'] = '';
-    
-if($_SESSION['email'] != NULL)
+
+if(@($_SESSION['email'] != NULL))
 {
     header("location:verifyEmailSessionExists.php");
 }
 
 //connect to MySQL
-else if ($_POST['submittedVerificationKey'] != NULL && $_POST['email'] != NULL) 
+else if (@($_POST['submittedVerificationKey'] != NULL) && @($_POST['email'] != NULL)) 
 {
     session_start();
     $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );

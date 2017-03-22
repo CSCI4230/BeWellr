@@ -4,7 +4,7 @@ require_once __DIR__ . '/db_connect/db_config.php';
 
 $_SESSION['message'] = '';
     
-if ($_POST['submittedVerificationKey']) 
+if (@($_POST['submittedVerificationKey'])) 
 {
     session_start();
     $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE );
