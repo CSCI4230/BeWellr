@@ -35,6 +35,7 @@ logged_in_redirect();
 		    $insert = $mysqli->query($sql);
 
             $email = $mysqli->real_escape_string($_POST['email']);
+            $text = "Your verification key is " . $verificationKey;
 
             // send the user an email with the verification key
             $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
@@ -44,9 +45,9 @@ logged_in_redirect();
             $mailer = Swift_Mailer::newInstance($transport);
 
             $message = Swift_Message::newInstance('Email Verification')
-              ->setFrom(array('abc@example.com' => 'ABC'))
+              ->setFrom(array('bewellrverify@gmail.com' => 'BeWellr'))
               ->setTo(array($email))
-              ->setBody($verificationKey);
+              ->setBody($text);
 
             $result = $mailer->send($message);
 
