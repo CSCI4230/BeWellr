@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2017 at 02:33 AM
+-- Generation Time: Mar 26, 2017 at 08:20 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -53,7 +53,7 @@ INSERT INTO `preassessment` (`questionid`, `question`, `YA`, `A`, `OA`, `social`
 (5, 'I make an effort to stay in contact with my family/friends.', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0),
 (6, 'I expend moderate amounts of energy when I am physically active', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0),
 (7, 'I consult a higher power for answers.', 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
-(8, "I manage life's situations well.", 1, 1, 1, 0, 0, 1, 0, 0, 0, 0),
+(8, 'I manage life’s situations well.', 1, 1, 1, 0, 0, 1, 0, 0, 0, 0),
 (9, 'I enjoy the schoolwork I do.', 1, 0, 0, 0, 1, 0, 0, 0, 0, 0),
 (10, 'I enjoy the work I do.', 0, 1, 0, 0, 1, 0, 0, 0, 0, 0),
 (11, 'I recycle.', 1, 1, 1, 0, 0, 0, 0, 0, 0, 1),
@@ -72,8 +72,8 @@ INSERT INTO `preassessment` (`questionid`, `question`, `YA`, `A`, `OA`, `social`
 (24, 'My schoolwork is satisfying.', 1, 0, 0, 0, 1, 0, 0, 0, 0, 0),
 (25, 'The work I do is satisfying.', 0, 1, 0, 0, 1, 0, 0, 0, 0, 0),
 (26, 'I display affection toward loved ones', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0),
-(27, 'I read.', 1, 1, 1, 0, 0, 0, 0, 1, 0, 0),
-(28, 'I develop my spirituality', 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
+(27, 'I read.', 1, 0, 1, 0, 0, 0, 0, 1, 0, 0),
+(28, 'I develop my spirituality', 0, 1, 1, 0, 0, 0, 0, 0, 1, 0),
 (29, 'I make healthy food choices', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0),
 (30, 'I pray/talk to a higher power.', 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
 (31, 'My daily activities are important.', 0, 0, 1, 0, 1, 0, 0, 0, 0, 0),
