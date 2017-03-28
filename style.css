@@ -340,6 +340,12 @@ body {
     font-size: 22px;
 }
 
+.border3 {
+    text-align: left;
+    font-family: 'Amethysta', serif;
+    font-size: 15px;
+}
+
  .borderblock {
     border-color: #ccc;
     border-width: 3px;
@@ -560,14 +566,14 @@ li.dropdown {
 .suvContainer {
     text-align: center;
     color: black;
-	font-family: 'Kaushan Script', cursive;
-	font-size: 28px;
-	font-style: normal;
-	font-variant: normal;
+    font-family: 'Amethysta', serif;
+	font-size: 20px;
 	font-weight: 500;
     margin-top: 25px;
     margin-bottom: 20px;
     background-color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* Beginning of intervention page */

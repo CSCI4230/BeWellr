@@ -110,7 +110,7 @@
   $questionNumber=0;
  while ($row = mysqli_fetch_assoc($coping))
   {?>
-        <h6 class="border"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
+        <h6 class="border3"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
@@ -129,7 +129,7 @@ $questionNumber++;
   $food = mysqli_query($connection, "SELECT * from intervention where food = 1");
   while ($row = mysqli_fetch_assoc($food))
   {?>
-        <h6 class="border"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
+        <h6 class="border3"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
@@ -147,7 +147,7 @@ $questionNumber++;
   $physical = mysqli_query($connection, "SELECT * from intervention where physical = 1");
   while ($row = mysqli_fetch_assoc($physical))
   {?>
-        <h6 class="border"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
+        <h6 class="border3"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>
@@ -168,7 +168,7 @@ $questionNumber++;
   $personal = mysqli_query($connection, "SELECT * from intervention where personal = 1");
   while ($row = mysqli_fetch_assoc($personal))
   {?>
-        <h6 class="border"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
+        <h6 class="border3"><?php echo $questionNumber+1 ?>. <?php echo $row["question"]?></h6>
         <div class="qPadding" id="q1Bullets">
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Yes</label>
         <label class="border3"><input type="radio" name="<?php echo $questionNumber ?>" value=0>No</label>

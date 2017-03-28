@@ -9,7 +9,26 @@ if (logged_in()) {
 ?>
 
 <form class="survey" action="" method="post">
-<div class="container2">
+
+    <?php 
+    if ($_GET['mode'] == 'youngAdult') {
+  		$title = "Young Adult Post-Assessment Survey";
+  	}
+
+  	else if ($_GET['mode']=='Adult') {
+  		$title = "Adult Post-Assessment Survey";
+  	}
+
+  	else if ($_GET['mode']== 'olderAdult') {
+  		$title = "Older Adult Post-Assessment Survey";
+  	} ?>
+
+  <div class="container2">
+      
+    <h3 id="surveyTitle"><?php echo $title ?></h3>
+
+  <div class="innerContainer">
+      
 <?php
 $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 	if(isset($_GET['mode']) == true && in_array($_GET['mode'], $mode_allowed) == true) {
@@ -105,5 +124,6 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
     <br>
     <button>Submit</button>
 		</div>
+        </div>
     </form>
 <?php } ?>
