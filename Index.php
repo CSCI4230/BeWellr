@@ -41,7 +41,7 @@
          <a class = "facts" href="#popup3"><img id="water-bottle" src="images/water-bottle.png" ></a>
          <div id="popup3" class="overlay">
 	           <div class="popup">
-                    <p>The commonly recommend amount of water to consume is eight 8-ounce glasses, which equals 64-ounces. <a href="https://authoritynutrition.com/how-much-water-should-you-drink-per-day/" target="_blank">Click Here for more information</a></p><a class="close" href="#">&times;</a></div></div>
+                    <p>The commonly recommend amount of water to consume is eight 8-ounce glasses, which equals 64-ounces. <a href="https://authoritynutrition.com/how-much-water-should-you-drink-per-day/" target="_blank">Click Here for more information</a></p><a class="close" href="#showpopup">&times;</a></div></div>
 
         <a class = "facts" href="#popup4"><img id="weight" src="images/weight.png"></a>
         <div id="popup4" class="overlay">

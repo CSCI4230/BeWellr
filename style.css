@@ -333,9 +333,13 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .border{
-    text-align: left;
+    text-align: center;
+    font-family: 'Amethysta', serif;
+    font-size: 22px;
 }
+
  .borderblock {
     border-color: #ccc;
     border-width: 3px;
@@ -345,30 +349,44 @@ body {
     padding: 4px;
   }
 
- .border2 {
+.border2 {
+    font-family: 'Amethysta', serif;
     text-align: center;
     color: #76b852;
     border-color: #76b852;
-    border-width: 4px;
+    border-width: 1px;
     border-bottom-style: groove;
     margin: 10px 10px 0px 0px;
     padding: 3px
-  }
+}
 
-  .qPadding {
+.qPadding {
+      margin: 0px;
       padding: 10px 0px 0px 0px;
-      font-size: 17px;
-    }
+      font-size: 18px;
+}
 
 .container2 {
-    width: 1200px;
-    height: auto;
-    margin: 20px auto;
+    margin: 0 auto;
+    width: 1000px;
     padding: 15px;
     text-align: center;
-    background-color: white;
+    background-color: #c2ffc1;
     border-radius: 10px;
     box-shadow: 0 0 100px 0 #FFFFFF, 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.innerContainer {
+    margin: 0 auto;
+    width: 800px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#surveyTitle{
+    text-align: center;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 40px;
 }
 
 .overlay {

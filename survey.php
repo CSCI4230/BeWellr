@@ -1,9 +1,9 @@
-<?php 
-include 'header.php';	
+<?php
+include 'header.php';
 include 'db_connect/db_config.php';
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 
-if (logged_in()) {  
+if (logged_in()) {
   $user_id = get_userid($connection);
 }
 else {
@@ -13,6 +13,9 @@ else {
 
 <form class="survey" action="" method="post">
 <div class="container2">
+  <h3 id="surveyTitle">Pre-Assessment Survey</h3>
+    
+<div class="innerContainer">    
 <?php
 $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 	if(isset($_GET['mode']) == true && in_array($_GET['mode'], $mode_allowed) == true) {
@@ -26,16 +29,16 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 	$environmental = 0;
 	$questionNumber = 0;
 	$count = 0;
-	
+
 	//print_r($_POST); for testing, prints the post array
 	if ($_GET['mode'] == 'youngAdult') {
 		$type = "YA";
 	}
-	
+
 	else if ($_GET['mode']=='Adult') {
 		$type = "A";
 	}
-	
+
 	else if ($_GET['mode']== 'olderAdult') {
 		$type = "OA";
 	}
@@ -45,25 +48,25 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 		header('Location: surveyResult.php');
 	}
 	while ($row = mysqli_fetch_assoc($query)) {
-	$questionArray[$questionNumber] = $row;	
+	$questionArray[$questionNumber] = $row;
 	?>
 				<h3 class="border"><?php echo $row["question"];?></h3>
 				<div class="qPadding" id="q1Bullets">
-        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=0>Never</label>                 
-        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Once in a while</label> 
-        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=2>Sometimes</label> 
+        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=0>Never</label>
+        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=1>Once in a while</label>
+        <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=2>Sometimes</label>
         <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=3>Often</label>
         <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=4>Very Often</label>
         <label class="border2"><input type="radio" name="<?php echo $questionNumber ?>" value=5>Always</label>
       </div>
-      
-    
-<?php 
+
+
+<?php
 
 	$questionNumber++;
 	}
 
-	if ( ! empty( $_POST ) )	
+	if ( ! empty( $_POST ) )
 	{
 		while($count < $questionNumber){
 			if ($questionArray[$count]['social'] == 1){
@@ -100,7 +103,7 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 		        die("Error: {$connection->errno} : {$connection->error}");
 		    }
 	}
-	
+
 
 //print_r($questionArray); //this prints the array of arrays for the questions.  it's for testing.
 ?>
@@ -108,5 +111,6 @@ $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
     <br>
     <button>Submit</button>
 		</div>
+    </div>
     </form>
 <?php } ?>
