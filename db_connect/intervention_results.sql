@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 04, 2017 at 01:08 PM
+-- Generation Time: Apr 01, 2017 at 05:37 PM
 -- Server version: 5.5.52-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `intervention_results` (
   `user_id` bigint(255) NOT NULL,
+  `date` tinytext,
   `weekNumber` tinyint(4) NOT NULL,
   `dayOfWeekNumber` tinyint(4) NOT NULL,
   `IBScore` tinyint(4) NOT NULL,
@@ -36,6 +37,10 @@ CREATE TABLE IF NOT EXISTS `intervention_results` (
   `PGScore` tinyint(4) NOT NULL,
   `TotalScore` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `intervention_results`
+--
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

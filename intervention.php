@@ -13,6 +13,15 @@
 		 header('location: welcome.php');
 	 }
 	 //print_r($_POST); //Used For Testing $_POST Array
+	 
+    $today = date("mdY");
+    $sql = "SELECT user_id, date FROM intervention_results WHERE user_id = $user_id AND date = $today";
+    $result = mysqli_query($connection, $sql);
+    if(mysqli_num_rows($result) > 0)
+    {
+        // the user's already taken the survey today
+    }
+    
   ?>
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">
@@ -91,6 +100,7 @@
 
         <div class="tab">
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wellnessQuestions')" id="defaultOpen">Wellness Questions</a>
+            <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'todaysResults')" >Todays Results</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'weekAverages')">Week Averages</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'overallAverages')">Overall Averages</a>
         </div>
@@ -254,9 +264,21 @@ $questionNumber++;
 	  }
   }
 
-  $sql = "INSERT INTO intervention_results (user_id, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $week, $day, $ib, $fs, $pa, $pg, $total)";
+if(!empty($_POST))
+{
+    $today = date("mdY");
+    $sql = "SELECT user_id, date FROM intervention_results WHERE user_id = $user_id AND date = $today";
+    $result = mysqli_query($connection, $sql);
+    if(mysqli_num_rows($result) > 0)
+    {
+    }
+    else
+    {
+        $sql = "INSERT INTO intervention_results (user_id, date, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $today, $week, $day, $ib, $fs, $pa, $pg, $total)";
 
-  $insert = $connection->query($sql);
+        $insert = $connection->query($sql);
+    }
+}
 
 
 ?>
@@ -267,6 +289,16 @@ $questionNumber++;
         <button>Submit</button>
     </form>
 
+        </div>
+        
+        <div id="todaysResults" class="tabcontent">
+            <!--Code for Week Averages go HERE-->
+            <!--Code for Week Averages go HERE-->
+            <!--Code for Week Averages go HERE-->
+            <!--Code for Week Averages go HERE-->
+            <!--Code for Week Averages go HERE-->
+            <h3>Today's Results</h3>
+            <p>This is the location for today's results.</p>
         </div>
 
         <div id="weekAverages" class="tabcontent">
