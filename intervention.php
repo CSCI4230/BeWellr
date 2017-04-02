@@ -264,7 +264,7 @@ $questionNumber++;
 	  }
   }
 
-if(!empty($_POST))
+if(isset($_POST['btnSubmit']))
 {
     $today = date("mdY");
     $sql = "SELECT user_id, date FROM intervention_results WHERE user_id = $user_id AND date = $today";
@@ -286,7 +286,9 @@ if(!empty($_POST))
 <!-- >>>>>>> d3cb0f42f3122c138907c3d455b572425281d132 -->
 
         <br/>
-        <button>Submit</button>
+            <form method="post" action="">
+            <input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" />
+			</form>
     </form>
 
         </div>
