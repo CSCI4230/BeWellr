@@ -309,10 +309,27 @@ if(isset($_POST['btnSubmit']))
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
-        </div>
+					<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
+						<?php 
+						for ($i = 1; $i < 5; $i++){ 
+							$week = mysqli_fetch_array(mysqli_query($connection, "select count(weekNumber) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							if ($week[0] > 0) {?>
+							<h3>WEEK <?php echo $i;?> </h3> <?php
+							$IBScore = mysqli_fetch_array(mysqli_query($connection, "select sum(IBScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select sum(FSScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$PAScore = mysqli_fetch_array(mysqli_query($connection, "select sum(PAScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$PGScore = mysqli_fetch_array(mysqli_query($connection, "select sum(PGScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
+							?>
+							<div class = "chart">
+								<canvas id = <?php echo $i; ?>></canvas>
+								<script>var obj = <?php echo json_encode($data);?>;</script>
+								<script>var ID = <?php echo json_encode($i)?>;</script>
+								<script src = "InterventionChart.js"></script>
+								</div>
+							<?php } } ?>
+						</div>
         <div id="overallAverages" class="tabcontent">
             <!--Code for Overall Averages go HERE-->
             <!--Code for Overall Averages go HERE-->

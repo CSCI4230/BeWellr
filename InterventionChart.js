@@ -1,13 +1,11 @@
-
-var ctx = document.getElementById("barChart");
+var ctx = document.getElementById(ID);
 Chart.defaults.global.defaultFontColor = "#18191A";
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Social', 'Vocational', 'Emotional', 'Physical', 'Intellectual',  'Spiritual','Environmental'],
+    labels: ["Interactive Behaviour", "Food Selection", "Physcial Activity", "Personal Growth"],
     datasets: [{
       label: 'Your Results',
-      color: "#fff",
       data: obj,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
