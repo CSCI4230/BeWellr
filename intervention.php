@@ -316,10 +316,10 @@ if(isset($_POST['btnSubmit']))
 							$week = mysqli_fetch_array(mysqli_query($connection, "select count(weekNumber) from intervention_results where user_id = $user_id and weekNumber = $i"));
 							if ($week[0] > 0) {?>
 							<h3>WEEK <?php echo $i;?> </h3> <?php
-							$IBScore = mysqli_fetch_array(mysqli_query($connection, "select sum(IBScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
-							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select sum(FSScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
-							$PAScore = mysqli_fetch_array(mysqli_query($connection, "select sum(PAScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
-							$PGScore = mysqli_fetch_array(mysqli_query($connection, "select sum(PGScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
+							$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
 							$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
 							?>
 							<div class = "chart">
