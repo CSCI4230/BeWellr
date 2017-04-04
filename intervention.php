@@ -336,8 +336,21 @@ if(isset($_POST['btnSubmit']))
             <!--Code for Overall Averages go HERE-->
             <!--Code for Overall Averages go HERE-->
             <!--Code for Overall Averages go HERE-->
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
+            <h3>Overall Average</h3>
+						<?php 
+						$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id"));
+						$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id"));
+						$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id"));
+						$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id"));
+						$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
+						$i = "mychart";
+						?>
+						<div class = "chart">
+						<canvas id = <?php echo $i; ?>></canvas>
+						<script>var obj = <?php echo json_encode($data);?>;</script>
+						<script>var ID = <?php echo json_encode($i)?>;</script>
+						<script src = "InterventionChart.js"></script>
+						</div>
         </div>
 
         <script>
