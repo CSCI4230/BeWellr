@@ -301,17 +301,15 @@ if(isset($_POST['btnSubmit']))
             <!--Code for Week Averages go HERE-->
             <h3>Today's Results</h3>
 						<?php
-						$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id and date = $today"));
+							$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id and date = $today"));
 							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id and date = $today"));
 							$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id and date = $today"));
 							$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id and date = $today"));
-							$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
-							$i = "mychart";
+							$datax = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
 							?>
 							<div class = "chart">
-								<canvas id = <?php echo $i; ?>></canvas>
-								<script>var obj = <?php echo json_encode($data);?>;</script>
-								<script>var ID = <?php echo json_encode($i)?>;</script>
+								<canvas id = "myChart" ></canvas>
+								<script>var objc = <?php echo json_encode($datax);?>;</script>
 								<script src = "InterventionChart.js"></script>
 								</div>
             
@@ -326,9 +324,9 @@ if(isset($_POST['btnSubmit']))
 					<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 						<?php 
-						for ($i = 1; $i < 5; $i++){ 
+						for ($i = 1; $i <= 5; $i++){ 
 							$week = mysqli_fetch_array(mysqli_query($connection, "select count(weekNumber) from intervention_results where user_id = $user_id and weekNumber = $i"));
-							if ($week[0] > 0) {?>
+							if ($week[0] > 0 && $i <= 4) {?>
 							<h3>WEEK <?php echo $i;?> </h3> <?php
 							$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
 							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id and weekNumber = $i"));
@@ -342,22 +340,14 @@ if(isset($_POST['btnSubmit']))
 								<script>var ID = <?php echo json_encode($i)?>;</script>
 								<script src = "InterventionChart.js"></script>
 								</div>
-							<?php } } ?>
-						</div>
-        <div id="overallAverages" class="tabcontent">
-            <!--Code for Overall Averages go HERE-->
-            <!--Code for Overall Averages go HERE-->
-            <!--Code for Overall Averages go HERE-->
-            <!--Code for Overall Averages go HERE-->
-            <!--Code for Overall Averages go HERE-->
-            <h3>Overall Average</h3>
-						<?php 
-						$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id"));
-						$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id"));
-						$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id"));
-						$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id"));
-						$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
-						$i = "mychart";
+							<?php } 
+								else if ($i == 5) {
+									?> <h3>Overall Average </h3> <?php
+									$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id"));
+									$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id"));
+									$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id"));
+									$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id"));
+									$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
 						?>
 						<div class = "chart">
 						<canvas id = <?php echo $i; ?>></canvas>
@@ -365,7 +355,10 @@ if(isset($_POST['btnSubmit']))
 						<script>var ID = <?php echo json_encode($i)?>;</script>
 						<script src = "InterventionChart.js"></script>
 						</div>
-        </div>
+							<?php	}
+								} ?>
+						</div>
+       
 
         <script>
         // Get the element with id="defaultOpen" and click on it
