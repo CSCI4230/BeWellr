@@ -300,7 +300,21 @@ if(isset($_POST['btnSubmit']))
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
             <h3>Today's Results</h3>
-            <p>This is the location for today's results.</p>
+						<?php
+						$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id and date = $today"));
+							$FSScore = mysqli_fetch_array(mysqli_query($connection, "select avg(FSScore) from intervention_results where user_id = $user_id and date = $today"));
+							$PAScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PAScore) from intervention_results where user_id = $user_id and date = $today"));
+							$PGScore = mysqli_fetch_array(mysqli_query($connection, "select avg(PGScore) from intervention_results where user_id = $user_id and date = $today"));
+							$data = array($IBScore[0], $FSScore[0], $PAScore[0], $PGScore[0]);
+							$i = "mychart";
+							?>
+							<div class = "chart">
+								<canvas id = <?php echo $i; ?>></canvas>
+								<script>var obj = <?php echo json_encode($data);?>;</script>
+								<script>var ID = <?php echo json_encode($i)?>;</script>
+								<script src = "InterventionChart.js"></script>
+								</div>
+            
         </div>
 
         <div id="weekAverages" class="tabcontent">
