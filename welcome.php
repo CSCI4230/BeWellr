@@ -25,9 +25,9 @@
   	{
   			echo("No results");
   	}
-      
+
 	protect_page();
-    
+
 ?>
 	<h2>Welcome!</h2>
 	<div class="container">
@@ -35,15 +35,15 @@
 			<h4><?php echo "Welcome $firstname $lastname to BeWellr";?> </h4>
             <?php
                 if (has_taken_preassessment($connection, $user_id) == true) { ?>
-                <p>Thank you for taking the Pre-assesment survey! <br><b>You're Doing Great!!</b><br>You can always go back and view your Pre-assesment results by clicking the Pre-assesment button to the right.<br><br>We hope you are enjoying the journey to living a better life. When you are ready click the Intervention button on the right to jump right into your exciting 4-week intervention. <br><br>When you are finished with your Intervention, you can click the Post-assesment button to the right to retake the survey you took at the beginning of the program. Then we can see the progress made and how your lifestyle has got better. </p>
+                <p>Thank you for taking the Pre-assesment survey! <br><b>You're Doing Great!!</b><br>You can always go back and view your Pre-assesment results by clicking the Pre-assesment button to the right.<br><br>We hope you are enjoying the journey to living a better life. When you are ready, click the Intervention button on the right to jump right into your exciting 4-week intervention. <br><br>When you are finished with your Intervention, you can click the Post-assesment button to take an exit survey that will show you how far you have come.</p>
             <?php    }
             else {      ?>
                 <p>Welcome to the BeWell'r 4-week program! Congratulations on taking the first step at living a better and healthier lifestyle. <br> To start, please click on the Pre-assesment Button on the right. This is where you'll take a survey where we'll compare the progress you've made at the end. We hope you enjoy and thanks again for joining BeWell'r! </p>
             <?php }    ?>
-            
+
         </div>
 		<div class="wrap">
-            
+
             <a href="userSurvey.php" class="button2">Pre-Assessment</a>
             <?php
         if (has_taken_preassessment($connection, $user_id) == true) { ?>
@@ -51,30 +51,13 @@
             <a href="userSurveyPost.php" class="button">Post-Assessment</a>
     <?php    }
         else {
-            
+
         }
         ?>
-				
+
 			</div>
     </div>
-     <div class="bottomContainer">
-        <div class="quoteBox">
-            <h3 class="quote">
-            "Go confidently in the direction of your dreams. Live the life you have imagined."
-            </h3>
-            <p class="quoteAuthor">-Henry David Thoreau</p>
-         </div>
-     </div>
-     <div class="imageContainer">
-       <img id="food" src="images/food.png">
-        <img id="fruit" src="images/fruit.png">
-        <img id="water-bottle" src="images/water-bottle.png">
-        <img id="weight" src="images/weight.png">
-        <img id="bench" src="images/bench.png">
-        <img id="cardiogram" src="images/cardiogram.png">
-        <img id="strawberry" src="images/strawberry.png">
-        <img id="juice" src="images/juice.png">
-     </div>
+
 <?php mysqli_close($connection); ?>
  </body>
 </html>

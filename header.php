@@ -34,5 +34,9 @@
   </li>
 	<li><a href="contact.php">Contact</a></li>
   <li><a href="credits.php">Credits</a></li>
+  <?php
+    if (logged_in() == true) { ?>
+  <li><a href="learnmore.php">Learn More</a></li>
+<?php    } ?>
 </ul>
 </div>

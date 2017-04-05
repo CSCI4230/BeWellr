@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <?php
    include 'header.php';
-   logged_in_redirect();
   ?>
 </head>
 <body>
