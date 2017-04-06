@@ -773,14 +773,15 @@ input[type=text]:focus {
 	padding-bottom: 40px;
 	font-family: Oswald;
 	font-size: 20px;
-  min-height: 50px;
-  text-align: center;
-  background-color: white;
+    min-height: 50px;
+    text-align: center;
+    background-color: white;
 	border-width:5px;
-  border-style:groove;
+    border-style:groove;
 	margin: auto;
-	margin-top: 200px;
-	opacity: 0.9;
+	margin-top: 100px;
+    margin-bottom: 50px;
+	opacity: .9;
 }
 
 textarea {
