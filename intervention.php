@@ -1,9 +1,10 @@
 <!doctype html>
-
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <?php
+    session_start();
    include 'header.php';
    include 'db_connect/db_config.php';
    protect_page();
@@ -19,7 +20,12 @@
     $result = mysqli_query($connection, $sql);
     if(mysqli_num_rows($result) > 0)
     {
-        // the user's already taken the survey today
+        $_SESSION['message'] = "You've already completed the survey today. Please come back tomorrow!";
+        $_SESSION['takenToday'] = True;
+    }
+    else{
+        $_SESSION['message'] = "";
+        $_SESSION['takenToday'] = False;
     }
     
   ?>
@@ -28,6 +34,10 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div class="alert alert-error">
+ <?= $_SESSION['message'] ?>
+</div>
 
 </head>
 
@@ -269,15 +279,13 @@ if(isset($_POST['btnSubmit']))
     $today = date("mdY");
     $sql = "SELECT user_id, date FROM intervention_results WHERE user_id = $user_id AND date = $today";
     $result = mysqli_query($connection, $sql);
-    if(mysqli_num_rows($result) > 0)
-    {
-    }
-    else
+    if(!$_SESSION['takenToday'])
     {
         $sql = "INSERT INTO intervention_results (user_id, date, weekNumber, dayOfWeekNumber, IBScore, FSScore, PAScore, PGScore, TotalScore) VALUES ($user_id, $today, $week, $day, $ib, $fs, $pa, $pg, $total)";
 
         $insert = $connection->query($sql);
     }
+    $_POST=array();
 }
 
 
