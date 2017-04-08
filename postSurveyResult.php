@@ -12,6 +12,7 @@ else {
 }
 $result = mysqli_fetch_array(mysqli_query($connection, "select count(user_id) from postassessment_results where user_id = $user_id"));
 $data = array();
+$data1 = array();
 if ($result[0] > 0 && logged_in()){
 	 $results = mysqli_fetch_array(mysqli_query($connection, "select socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore from postassessment_results where user_id = $user_id"));
 		for($i = 0; $i < sizeof($results)/2; $i++) {
@@ -21,15 +22,21 @@ if ($result[0] > 0 && logged_in()){
 else if (!logged_in() && isset($_SESSION['data'])) {
 	$data = $_SESSION['data'];
 }
+	 $results = mysqli_fetch_array(mysqli_query($connection, "select socialScore, vocationalScore, emotionalScore, physicalScore, intellectualScore, spiritualScore, environmentalScore from preassessment_results where user_id = $user_id"));
+
+for($i = 0; $i < sizeof($results)/2; $i++) {
+			$data1[$i] = $results[$i];
+		}
+
 ?>
 
 <h1>Postassessment Results</h1>
 <div class = "chart">
 <canvas id = "barChart"></canvas>
-<script>
-	var obj = <?php echo json_encode($data);?>;</script>
+<script>var obj = <?php echo json_encode($data);?>;</script>
+<script>var obj1 = <?php echo json_encode($data1);?>;</script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src = "chart.js"></script>
+<script src = "postChart.js"></script>
 </div>
  
 <?php 
