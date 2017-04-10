@@ -20,7 +20,7 @@
   $copingQCount = 0; //Counts the coping questions
   $coping = mysqli_query($connection, "SELECT * from intervention where coping = 1");
   $questionNumber=0;
-        ?><h3>Coping Questions</h3>
+        ?><h3>Interactive Behavior Questions</h3>
     <?php while ($row = mysqli_fetch_assoc($coping))
   {?>
       
@@ -40,7 +40,7 @@ $questionNumber++;
   $foodQCount = 0; //Counts the coping questions
   $food = mysqli_query($connection, "SELECT * from intervention where food = 1");
   $questionNumber=0;
-        ?><h3>Food Questions</h3>
+        ?><h3>Food Selection Questions</h3>
     <?php while ($row = mysqli_fetch_assoc($food))
   {?>
       
@@ -55,11 +55,29 @@ $questionNumber++;
               ?>
 
          <?php
+  $physicalArray; //creates an array for holding Coping answer values
+  $physicalQCount = 0; //Counts the coping questions
+  $physical = mysqli_query($connection, "SELECT * from intervention where physical = 1");
+  $questionNumber=0;
+        ?><h3>Physical Activity Questions</h3>
+    <?php while ($row = mysqli_fetch_assoc($physical))
+  {?>
+      
+      <input type="text" name = "Question" placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
+        
+
+    
+    <?php
+$questionNumber++;
+  $physicalQCount++;
+  }
+              ?>
+         <?php
   $personalArray; //creates an array for holding Coping answer values
   $personalQCount = 0; //Counts the coping questions
   $personal = mysqli_query($connection, "SELECT * from intervention where personal = 1");
   $questionNumber=0;
-        ?><h3>Physical Activity Questions</h3>
+        ?><h3>Personal Growth Questions</h3>
     <?php while ($row = mysqli_fetch_assoc($personal))
   {?>
       
@@ -71,7 +89,8 @@ $questionNumber++;
 $questionNumber++;
   $personalQCount++;
   }
-              ?><br/>
+              ?>
+			    <br/>
         <button>Change</button></div>
 
 
