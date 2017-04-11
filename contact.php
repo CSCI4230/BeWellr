@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <?php include 'header.php'?>
-  <?php require_once 'swiftmailer/lib/swift_required.php'?>;
 </head>
 
 <body>
@@ -12,7 +11,7 @@
 
   <?php
   if (empty($_POST) == false) {
-    $require_fields = array('first_name', 'email', 'message');
+    $require_fields = array('first_name', 'email', 'subject', 'message');
     foreach($_POST as $key=>$value) {
       if(empty($value) && in_array($key, $require_fields) == true) {
         $errors[] = '*All fields are required!';
@@ -47,27 +46,11 @@
   {
     if(empty($_POST) == false && empty($errors) == true)
     {
-      $email = $_POST['email'];
-      $subject = $email;
-      $text = $_POST['message'];
-      $name = $_POST['first_name'];
-
-      // send the user an email with the verification key
-      $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
-        ->setUsername('bewellrinfo@gmail.com')
-        ->setPassword('bewellrinfo123');
-
-      $mailer = Swift_Mailer::newInstance($transport);
-
-      $message = Swift_Message::newInstance('Email Verification')
-        // Give the message a subject
-        ->setSubject($subject)
-        ->setFrom(array($email => $name))
-        ->setTo(array('bewellrinfo@gmail.com'))
-        ->setBody($text);
-
-      $result = $mailer->send($message);
-
+      $subject = $_POST['subject'];
+      $to = 'patino37@yahoo.com';
+      $body = $_POST['message'] . "\n\n From: ". $_POST['email'];
+      send_email($to, $subject, $body);
+      header('Location: contact.php?success');
       exit();
     }
     ?>
@@ -83,6 +66,7 @@
     <form action="" method="post">
       <input type="text" name = "first_name" placeholder="First Name" />
       <input type="text" name = "email" placeholder="E-mail Address"/>
+      <input type="text" name = "subject" placeholder="Subject"/><br><br>
       <textarea name="message" placeholder = "Please share any comments, questions, or feedback with us!"></textarea>
       <input type = "submit" value = "Send"/>
     </form>
