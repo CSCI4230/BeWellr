@@ -38,11 +38,11 @@
 
        if(isset($_POST['noteSubmit']))
        {
-         $note = $_POST['note'];
+         $note = addslashes($_POST['note']);
          $email = $logged_in;
 
-         $sql = "INSERT INTO notes (note_id, user_id, email, date, note) VALUES (NULL, $userid, $email, now(), $note)";
-         $insert = $connection->query($sql);
+        $sql = "INSERT INTO notes (note_id, user_id, email, date, note) VALUES (NULL, '$userid', '$email', now(), '$note')";
+        $insert = $connection->query($sql);
        }
 
        mysqli_close($connection);
@@ -57,7 +57,7 @@
       }
      </script>
 
-     <form action="" id="notepad" method="post">
+     <form action="" method="post">
        <div class="paper">
         <div class="paper-content">
 
