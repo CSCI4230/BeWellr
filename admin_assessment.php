@@ -35,11 +35,10 @@
 		<form class="survey" action="" method="post">
         <div class="form" id="edit">
           <?php
-  $copingQCount = 0; //Counts the coping questions
-  $coping = mysqli_query($connection, "SELECT * from preassessment");
+  $question = mysqli_query($connection, "SELECT * from preassessment");
   $questionNumber=0;
         ?><h3>Interactive Behavior Questions</h3>
-    <?php while ($row = mysqli_fetch_assoc($coping))
+    <?php while ($row = mysqli_fetch_assoc($question))
   {?>
       
       <input type="text" name = <?php echo $entireQuestionNumber ?> placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
@@ -48,7 +47,6 @@
     
     <?php
 $questionNumber++;
-  $copingQCount++;
   $entireQuestionNumber++;
   }
      ?>
