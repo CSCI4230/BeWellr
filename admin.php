@@ -8,12 +8,31 @@
    include 'db_connect/db_config.php';
    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 //   $user_id = get_userid($connection);
-	 //print_r($_POST); //Used For Testing $_POST Array
+	// print_r($_POST); //Used For Testing $_POST Array
+	 $entireQuestionNumber = 1;
+	  if(!empty($_POST))
+	  {
+		 for($i = 1; $i <= count($_POST); $i++)
+		 {
+			 if ($_POST[$i] != null)
+			 {
+				 $update = "UPDATE intervention SET question = '$_POST[$i]' where questionid = $i";
+				 if ($connection->query($update) === TRUE) {
+					echo "Record updated successfully";
+					}
+ 					else {
+					echo "Error updating record: " . $connection->error;
+					}
+			 }
+		 }
+			 
+	  }
   ?>
 
 </head>
     <body>
         <h2>Change Intervention Questions</h2>
+		<form class="survey" action="" method="post">
         <div class="form" id="edit">
           <?php
   $copingArray; //creates an array for holding Coping answer values
@@ -24,13 +43,14 @@
     <?php while ($row = mysqli_fetch_assoc($coping))
   {?>
       
-      <input type="text" name = "Question" placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
+      <input type="text" name = <?php echo $entireQuestionNumber ?> placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
         
 
     
     <?php
 $questionNumber++;
   $copingQCount++;
+  $entireQuestionNumber++;
   }
               ?>
          
@@ -44,13 +64,14 @@ $questionNumber++;
     <?php while ($row = mysqli_fetch_assoc($food))
   {?>
       
-      <input type="text" name = "Question" placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
+      <input type="text" name = <?php echo $entireQuestionNumber ?> placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
         
 
     
     <?php
 $questionNumber++;
   $foodQCount++;
+   $entireQuestionNumber++;
   }
               ?>
 
@@ -63,13 +84,14 @@ $questionNumber++;
     <?php while ($row = mysqli_fetch_assoc($physical))
   {?>
       
-      <input type="text" name = "Question" placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
+      <input type="text" name = <?php echo $entireQuestionNumber ?> placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
         
 
     
     <?php
 $questionNumber++;
   $physicalQCount++;
+   $entireQuestionNumber++;
   }
               ?>
          <?php
@@ -81,22 +103,21 @@ $questionNumber++;
     <?php while ($row = mysqli_fetch_assoc($personal))
   {?>
       
-      <input type="text" name = "Question" placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
+      <input type="text" name = <?php echo $entireQuestionNumber ?> placeholder="<?php echo $questionNumber+1 ?>. <?php echo $row["question"]?>"/>
         
 
     
     <?php
 $questionNumber++;
   $personalQCount++;
+   $entireQuestionNumber++;
   }
               ?>
 			    <br/>
         <button>Change</button></div>
+	</form>
 
-
-    
-    
-    
+        
     
     
     
