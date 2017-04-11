@@ -30,12 +30,18 @@
             <a href="register.php">Sign Up</a>
     <?php    }
         ?>
+        <a href="credits.php">Credits</a>
     </div>
   </li>
 	<li><a href="contact.php">Contact</a></li>
-  <li><a href="credits.php">Credits</a></li>
   <li><a href="introduction.php">Introduction</a></li>
-  <li><a href="abouttheauthor.php">About the Author</a></li>
+  <li><a href="abouttheauthor.php">About</a></li>
   <li><a href="preface.php">Preface</a></li>
+  <?php
+  if (logged_in() == true)
+  { ?>
+    <li><a href="notepad.php">Notepad</a></li>
+    <li><a href="mynotes.php">My Notes</a></li>
+  <?php } ?>
 </ul>
 </div>

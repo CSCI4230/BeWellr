@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2017 at 11:05 PM
+-- Generation Time: Apr 11, 2017 at 07:19 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -42,11 +42,15 @@ CREATE TABLE `user_data` (
   `ethnicity` varchar(200) DEFAULT NULL,
   `maritalstatus` varchar(200) DEFAULT NULL,
   `education` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_data`
 --
+
+INSERT INTO `user_data` (`user_id`, `email`, `saltedhash`, `firstname`, `lastname`, `dob`, `weight`, `height`, `gender`, `workstatus`, `organization`, `occupation`, `ethnicity`, `maritalstatus`, `education`) VALUES
+(6, 'patino37@yahoo.com', '$2y$10$PpaAI2I0nZ/tpGPzb3qJA./fIcGJdxTjCfzJ/w72pmiZp4A5Yh5km', 'Jose', 'Patino', '1992-08-08', 270, 72, 'Male', 'Part Time', 'East Carolina University', 'Bartender', 'Hispanic', 'Live with significant other', 'College Graduate'),
+(7, 'yahiaseidi@hotmails.com', '$2y$10$akdJpsg7XC.uMak1C5Qbuu08Q95LaV2pdTJD53PnFBAMpwq5ZE.ae', 'Yahia', 'Seidi', '1990-01-01', 150, 60, 'Female', 'Full Time', 'ECU School of Medicine', 'Bank Teller', 'Native American', 'Married', 'Some Highschool');
 
 --
 -- Indexes for dumped tables
@@ -56,7 +60,8 @@ CREATE TABLE `user_data` (
 -- Indexes for table `user_data`
 --
 ALTER TABLE `user_data`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -66,7 +71,7 @@ ALTER TABLE `user_data`
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
