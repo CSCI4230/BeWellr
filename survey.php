@@ -38,7 +38,7 @@
 
   <div class="innerContainer">
 <?php
-<<<<<<< HEAD
+// <<<<<<< HEAD
 $mode_allowed = array('youngAdult', 'Adult', 'olderAdult');
 	if(isset($_GET['mode']) == true && in_array($_GET['mode'], $mode_allowed) == true) {
 	$type;
