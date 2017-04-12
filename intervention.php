@@ -14,7 +14,7 @@
 		 header('location: welcome.php');
 	 }
 	 //print_r($_POST); //Used For Testing $_POST Array
-	 
+
     $today = date("mdY");
     $sql = "SELECT user_id, date FROM intervention_results WHERE user_id = $user_id AND date = $today";
     $result = mysqli_query($connection, $sql);
@@ -27,7 +27,7 @@
         $_SESSION['message'] = "";
         $_SESSION['takenToday'] = False;
     }
-    
+
   ?>
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css">
@@ -112,7 +112,7 @@
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wellnessQuestions')" id="defaultOpen">Wellness Questions</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'todaysResults')" >Todays Results</a>
             <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'weekAverages')">Week Averages</a>
-            <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'overallAverages')">Overall Averages</a>
+            <!-- <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'overallAverages')">Overall Averages</a> -->
         </div>
 
         <div id="wellnessQuestions" class="tabcontent">
@@ -300,7 +300,7 @@ if(isset($_POST['btnSubmit']))
     </form>
 
         </div>
-        
+
         <div id="todaysResults" class="tabcontent">
             <!--Code for Week Averages go HERE-->
             <!--Code for Week Averages go HERE-->
@@ -320,7 +320,7 @@ if(isset($_POST['btnSubmit']))
 								<script>var objc = <?php echo json_encode($datax);?>;</script>
 								<script src = "InterventionChart.js"></script>
 								</div>
-            
+
         </div>
 
         <div id="weekAverages" class="tabcontent">
@@ -331,8 +331,8 @@ if(isset($_POST['btnSubmit']))
             <!--Code for Week Averages go HERE-->
 					<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
-						<?php 
-						for ($i = 1; $i <= 5; $i++){ 
+						<?php
+						for ($i = 1; $i <= 5; $i++){
 							$week = mysqli_fetch_array(mysqli_query($connection, "select count(weekNumber) from intervention_results where user_id = $user_id and weekNumber = $i"));
 							if ($week[0] > 0 && $i <= 4) {?>
 							<h3>WEEK <?php echo $i;?> </h3> <?php
@@ -348,7 +348,7 @@ if(isset($_POST['btnSubmit']))
 								<script>var ID = <?php echo json_encode($i)?>;</script>
 								<script src = "InterventionChart.js"></script>
 								</div>
-							<?php } 
+							<?php }
 								else if ($i == 5) {
 									?> <h3>Overall Average </h3> <?php
 									$IBScore = mysqli_fetch_array(mysqli_query($connection, "select avg(IBScore) from intervention_results where user_id = $user_id"));
@@ -366,7 +366,7 @@ if(isset($_POST['btnSubmit']))
 							<?php	}
 								} ?>
 						</div>
-       
+
 
         <script>
         // Get the element with id="defaultOpen" and click on it
