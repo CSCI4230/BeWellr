@@ -33,7 +33,7 @@
         <a href="credits.php">Credits</a>
     </div>
   </li>
-	<li><a href="contact.php">Contact</a></li>
+	<li><a href="contactPage.php">Contact</a></li>
   <li><a href="introduction.php">Introduction</a></li>
   <li><a href="abouttheauthor.php">About</a></li>
   <li><a href="preface.php">Preface</a></li>
