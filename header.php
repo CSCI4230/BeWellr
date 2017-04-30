@@ -42,6 +42,7 @@
   { ?>
     <li><a href="notepad.php">Notepad</a></li>
     <li><a href="mynotes.php">My Notes</a></li>
+    <li><a href="statistics.php">Statistics</a></li>
   <?php } ?>
 </ul>
 </div>
