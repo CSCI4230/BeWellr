@@ -3,6 +3,7 @@
 /*
  * adminVerified returns true if the admin account is verified by the database administrator
  *
+ *    *NOTE* administrators must be verified by whomever is in charge of the database. 1 = verified & 0 = not verified.
  * 
  */
 

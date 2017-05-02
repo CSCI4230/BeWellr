@@ -17,9 +17,11 @@ require_once __DIR__ . '/db_connect/db_config.php';
 
       $result = verifyPassword($email, $password);
 	  $result2 = adminVerified($email);
-
+	  
+	  // checks if username and password is in admin table.
       if ($result)
       {
+		  // checks if that email is a verified administrator.
 		  if($result2)
 		  {  
 			$_SESSION['email'] = $_POST['email'];

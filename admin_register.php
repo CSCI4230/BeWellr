@@ -1,4 +1,6 @@
 <?php 
+// *NOTE* administrators must be verified by whomever is in charge of the database. 1 = verified & 0 = not verified.
+
 include 'header.php';
 logged_in_redirect();    
 
