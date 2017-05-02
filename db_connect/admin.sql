@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2017 at 08:21 PM
+-- Generation Time: May 02, 2017 at 12:05 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,7 +31,8 @@ CREATE TABLE `admin` (
   `email` varchar(255) NOT NULL,
   `saltedhash` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `verified` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -44,6 +45,15 @@ CREATE TABLE `admin` (
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
